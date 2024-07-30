@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'utilities.css' %}">
+    <link rel="stylesheet" href="{% static 'common.css' %}">
+    <link rel="stylesheet" href="{% static 'navbar.css' %}">
+    <title>Vegi</title>
+</head>
+
+<body>
+    <header>
+
+        {% include "common/navbar.html" %}
+        {% block header %}
+        {% block navbar %}
+        {% endblock navbar %}
+        {% endblock header %}
+    </header>
+    <main>
+        {% block body %}
+
+        {% endblock body %}
+    </main>
+    <br><br><br><br><br>
+    <footer>
+        {% block footer %}
+
+        {% endblock footer %}
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<main style="min-height: 90vh;">
+    <header>
+        <p class="text-success">{{product.category}} <span class="mx-3">></span> <span>{{product.sub_category}}</span>
+        </p>
+        <hr>
+    </header>
+    <section>
+        <div class="f-center">
+            <div class="image_side ">
+                <div class="border-muted p-2">
+                    <img class="img-fluid" src="{{product.photo.url}}" alt="">
+                </div>
+            </div>
+            <div class="detaile_side">
+                <div class="">
+                    <button class="btn">{{product.status}}</button>
+                    <h2 class="f-bold">{{product.name}}</h2>
+                    <h5>By <span class="f-bold text-primary">{{product.seller.store_name}}</span></h5>
+                    <div>⭐<span class="ms-4">({{product.total_review}})</span></div>
+                    <div>
+                        {% if product.discount is not 0.0 %}
+                        <h3 class="text-muted">
+                            $<del>{{product.price}}</del>/{{product.unit}}
+                            <span class="sm text-danger fw-bold">-{{product.discount}}% Off</span>
+                        </h3>
+                        {% endif %}
+                        <h1 class="text-primary">
+                            ${{product.current_price}}/{{product.unit}}
+                        </h1>
+                    </div>
+                    <form class="product_info" action="">
+                        <input type="number" value="1" name="" id="">
+                        <button class="btn btn-success">Add To Cart</button>
+                        <button onclick="wishlist_add(event)" class="btn btn-outline-secondary"><img src="{% static 'images/icon/wishlist.png' %}"
+                                alt=""></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% include "common/stay_home_banner.html" %}
+<script>
+    function wishlist_add(e){
+        e.preventDefault()
+        console.log('hellllooo')
+    }
+</script>
+{% endblock body %}

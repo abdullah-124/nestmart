@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+<main>
+  <section>
+    <div class="container">
+      <div class="product_container">
+        <div class="product_filtering">
+          {% include "./filtering_bar.html" %}
+        </div>
+        <!-- Product Side -->
+        <div class="pxs">
+          <div class="count gray flex j_between al_center">
+            <p class="pxs">We found <strong>{{1}}</strong> items for you!</p>
+            <div>
+              <label for="">Sort By:</label>
+              <select name="" id="">
+                <option value="rating">Default </option>
+                <option value="new">New</option>
+                <option value="rating">Rating </option>
+                <option value="name_A">Name (A-Z)</option>
+                <option value="name_Z">Name (Z-A)</option>
+
+              </select>
+            </div>
+          </div>
+          <a class="product_row">
+            {% for i in products %}
+            <div class="">
+              <div class="product_card">
+                <div class="badge bold">
+                  {% if i.discount > 0 %}
+                  <p class="gray"><del>${{i.price}}</del><span class="fs pxs red">{{i.discount}}% off</span></p>
+                  {% endif %}
+                </div>
+                <div class="img_box flex al_center">
+                  <img src="{{i.photo.url}}" alt="">
+                </div>
+                <div>
+                  <div class="info ">
+                    <div class="flex j_between al_center">
+                      <p class="fs">{{i.category}}</p>
+                      <div class="fs">
+                        ⭐ &Tab; ({{i.rating}})
+                      </div>
+                    </div>
+                    <h6 class=" fm">{{i.name}}</h6>
+                    <p class="fs">By <span class="green bold">{{i.seller.store_name}}</span></p>
+                    <div class="flex j_between al_center">
+                      <div>
+                        <h5>${{i.current_price}}/{{i.unit}}</h5>
+                      </div>
+                      <button class="btn btn_primary">
+                        <img src="{% static 'images/icon/cart_btn.png' %}" alt="">
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock body %}
+
+<!-- 
+ -->

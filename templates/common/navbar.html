@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<section class="container">
+    <div class=" navbar">
+        <nav class="">
+            <div class="flex j_between al_center">
+                <div class="logo">
+                    <img src="{% static 'images/logo.png' %}" alt="">
+                </div>
+                <div class="menu_items">
+                    <ul class=" flex al_center">
+                        <li class="btn"><a href="{% url 'home' %}">Home</a></li>
+                        <li class="btn"><a href="{% url 'products'  %}">Products</a></li>
+                        <!-- <li class="btn"><a href="">Category </a></li> -->
+                        <li class="btn"><a href="">Pages</a></li>
+                        <li class="btn"><a href="{% url 'blogs' %}">Blogs</a></li>
+                        <li class="btn"><a href="">About</a></li>
+                        <li class="btn"><a href="">FAQ</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </div>
+    
+    <div class="search_bar">
+        <form class="flex j_between al_center" action="">
+            <input placeholder="Search For Item..." class="search_input" type="text">
+            <div class="">
+                <button class="category_btn">Category &Del;</button>
+                <button class="search_btn" type="submit">
+                    <img src="{% static 'images/icon/search.png' %}" alt="">
+                </button>
+            </div>
+        </form>
+        <div class="user_menu_items">
+            <ul class="flex j_between al-center">
+                <li>
+                    <a class=" flex al_center" href="">
+                        <img src="{% static 'images/icon/account.png' %}" alt="">
+                        <p class="text">Account</p>
+                    </a>
+                </li>
+                <li>
+                    <a class=" flex al_center" href="">
+                        <img src="{% static 'images/icon/cart1.png' %}" alt="">
+                        <p class="text">00</p>
+                    </a>
+                </li>
+                <li>
+                    <a class=" flex al_center" href="">
+                        <img src="{% static 'images/icon/wishlist1.png' %}" alt="">
+                        <p class="text">00</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>

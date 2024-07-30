@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% block header %}
+<main>
+    <section class="header-bg">
+        <div class="container header_banner">
+            <div class="banner_text">
+                <h5>100% Organic Vegetables</h5>
+                <h1>The best way to stuff your wallet.</h1>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet reiciendis beatae consequuntur</p>
+            </div>
+        </div>
+    </section>
+    <div>
+        {% include "home_card.html" %}
+    </div>
+    <div>
+        {% for i in category.Fruits %}
+          <p>{{i}}</p>
+        {% endfor %}
+    </div>
+</main>
+{% endblock header %}

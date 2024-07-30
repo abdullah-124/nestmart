@@ -1,0 +1,69 @@
+.container{
+    max-width: 1100px;
+    margin: 0 auto;
+}
+.ps{
+    padding: 7px;
+}
+.pys{
+    padding: 7px 0;
+}
+.pxs{
+    padding: 0px 7px;
+}
+.bold{
+    font-weight: bold;
+}
+.fs {
+    font-size: 12px;
+}
+.fm{
+    font-size: 16px;
+}
+.fl{
+    font-size: 20px;
+}
+.fx{
+    font-size: 32px;
+}
+.fxl{
+    font-size: 40px;
+}
+.fxxl{
+    font-size: 48px;
+}
+/* COLOR */
+.gray{
+    color: gray;
+}
+.black{
+    color: black;
+}
+.green{
+    color: green;
+}
+.red{
+    color: red;
+}
+
+.badge{
+    position: absolute;
+    top: 0;
+}
+/* ##### FLEX AND GRID #########3 */
+.flex{
+    display: flex;
+    flex-wrap: wrap;
+}
+.j_between{
+    justify-content: space-between;
+}
+.j_center{
+    justify-content: center;
+}
+.al_center{
+    align-items: center;
+}
+.text_center{
+    text-align: center;
+}

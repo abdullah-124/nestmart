@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<section>
+    <div>
+        <div class="category_filter">
+            <h6 class="filter_title">Product Category</h6>
+            <hr>
+            <div>
+                {% for i in product_category  %}
+                <div class="flex j_between al_center">
+                    <div>
+                        <input type="radio" name="filter_category" id="">
+                        <label for="">{{i.name}}</label>
+                    </div>
+                    <p>[{{i.total_items}}]</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <!-- filter by price -->
+        <div class="gray pys">
+            <h6 class="filter_title">Filter By Price</h6>
+            <hr>
+            <div class="pys">
+                <input type="range" name="" id="">
+                <p class="pys"><span class="black bold">Price: </span> $20 - $250</p>
+                <input class="btn btn_primary" type="button" value="Filter">
+            </div>
+        </div>
+        <!-- filter by sub category -->
+        <div class="gray pys">
+            <h6 class="filter_title">Filter By Sub Category</h6>
+            <hr>
+            <div class="pys">
+                <div class="flex j_between al_center">
+                    <div>
+                        <input type="radio" name="filter_sub_category" id="">
+                        <label for="">Tomato</label>
+                    </div>
+                    <p>[20]</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
