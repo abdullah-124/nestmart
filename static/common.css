@@ -1,69 +1,25 @@
-.container{
-    max-width: 1100px;
-    margin: 0 auto;
+.w{
+    width: var(--w);
+    height: auto;
 }
-.ps{
-    padding: 7px;
+.nav_bge{
+    margin-left: 10px;
+    position: relative;
 }
-.pys{
-    padding: 7px 0;
-}
-.pxs{
-    padding: 0px 7px;
-}
-.bold{
-    font-weight: bold;
-}
-.fs {
-    font-size: 12px;
-}
-.fm{
-    font-size: 16px;
-}
-.fl{
-    font-size: 20px;
-}
-.fx{
-    font-size: 32px;
-}
-.fxl{
-    font-size: 40px;
-}
-.fxxl{
-    font-size: 48px;
-}
-/* COLOR */
-.gray{
-    color: gray;
-}
-.black{
-    color: black;
-}
-.green{
-    color: green;
-}
-.red{
-    color: red;
-}
-
-.badge{
+.nav_bge span{
+    width: 20px;
+    height: 20px;
+    background-color: #198754;
+    color: #fff;
+    border-radius: 50%;
     position: absolute;
     top: 0;
-}
-/* ##### FLEX AND GRID #########3 */
-.flex{
-    display: flex;
-    flex-wrap: wrap;
-}
-.j_between{
-    justify-content: space-between;
-}
-.j_center{
-    justify-content: center;
-}
-.al_center{
-    align-items: center;
-}
-.text_center{
+    right: 0;
     text-align: center;
+    font-size: 12px;
+    translate: 10px -10px;
+}
+.title_h1{
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
 }

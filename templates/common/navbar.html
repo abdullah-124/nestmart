@@ -1,59 +1,36 @@
 <!DOCTYPE html>
 {% load static %}
-<section class="container">
-    <div class=" navbar">
-        <nav class="">
-            <div class="flex j_between al_center">
-                <div class="logo">
-                    <img src="{% static 'images/logo.png' %}" alt="">
+<section class="container-fluid">
+    <div class="">
+        <nav class="navbar sticky-top navbar-expand-lg navbar-light ">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+              <a style="--w:120px" class="navbar-brand w m-auto" href="{% url 'home' %}">
+                <img class="img-fluid" src="{% static "/images/logo.png" %}" alt="">
+              </a>
+              
+              <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav m-auto  ">
+                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                  <a class="nav-link" href="{% url 'products' %}">Products</a>
+                  
+                  <a class="nav-link" href="#">Blog</a>
+                  <a class="nav-link" href="#">About</a>
                 </div>
-                <div class="menu_items">
-                    <ul class=" flex al_center">
-                        <li class="btn"><a href="{% url 'home' %}">Home</a></li>
-                        <li class="btn"><a href="{% url 'products'  %}">Products</a></li>
-                        <!-- <li class="btn"><a href="">Category </a></li> -->
-                        <li class="btn"><a href="">Pages</a></li>
-                        <li class="btn"><a href="{% url 'blogs' %}">Blogs</a></li>
-                        <li class="btn"><a href="">About</a></li>
-                        <li class="btn"><a href="">FAQ</a></li>
-                    </ul>
-                </div>
-
+              </div>
+              <div class="ms-auto">
+                <a class="nav_bge" href="">
+                    <img class="img-fluid" src="{% static "/images/icon/cart.png" %}" alt="">
+                    <span>4</span>
+                </a>
+                <a class="nav_bge" href="">
+                    <img src="{% static "/images/icon/wishlist.png" %}" alt="">
+                    <span>4</span>
+                </a>
+              </div>
             </div>
-        </nav>
-    </div>
-    
-    <div class="search_bar">
-        <form class="flex j_between al_center" action="">
-            <input placeholder="Search For Item..." class="search_input" type="text">
-            <div class="">
-                <button class="category_btn">Category &Del;</button>
-                <button class="search_btn" type="submit">
-                    <img src="{% static 'images/icon/search.png' %}" alt="">
-                </button>
-            </div>
-        </form>
-        <div class="user_menu_items">
-            <ul class="flex j_between al-center">
-                <li>
-                    <a class=" flex al_center" href="">
-                        <img src="{% static 'images/icon/account.png' %}" alt="">
-                        <p class="text">Account</p>
-                    </a>
-                </li>
-                <li>
-                    <a class=" flex al_center" href="">
-                        <img src="{% static 'images/icon/cart1.png' %}" alt="">
-                        <p class="text">00</p>
-                    </a>
-                </li>
-                <li>
-                    <a class=" flex al_center" href="">
-                        <img src="{% static 'images/icon/wishlist1.png' %}" alt="">
-                        <p class="text">00</p>
-                    </a>
-                </li>
-            </ul>
-        </div>
+          </nav>
     </div>
 </section>

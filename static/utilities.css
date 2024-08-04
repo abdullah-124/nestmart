@@ -1,57 +1,26 @@
-
-*{
+@import url('https://fonts.googleapis.com/css2?family=Exo+2&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+.pop {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+* {
     margin: 0;
     padding: 0;
     list-style: none;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    font-family: "Exo 2", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
-body{
+
+body {
     background: url('images/bg.png');
     background-size: contain;
     background-position: center;
 }
-h1{
-    font-size: 48px;
-    margin: 10px 0;
-}
-h5{
-    font-size: 16px;
-    font-weight: bold;
-}
-p{
-    font-size: 14px;
-    margin: 5px 0;
-}
-a{
+
+a {
     text-decoration: none;
-}
-select:hover{
-    outline: none;
-}
-option{
-    padding: 5px;
-}
-label{
-    font-size: 14px;
-}
-.btn{
-    text-decoration: none;
-    padding: 5px 10px;
-    border: 1px solid transparent;
-    transition: all .5s;
-    border-radius: 5px;
-    
-}
-.btn:hover{
-    border: 1px solid #d9d9f9;
-}
-.btn_primary{
-    color: #fff;
-    background: red;
-    transition: .5s;
-}
-.btn_primary:hover{
-    border: 1px solid red;
     color: black;
-    background: none;
 }
