@@ -1,44 +1,66 @@
 <!DOCTYPE html>
-<section>
-    <div>
-        <div class="category_filter">
-            <h6 class="filter_title">Product Category</h6>
-            <hr>
+<main>
+    <section>
+        <div class=" shadow rounded p-3">
+            <h5 class="border-bottom pb-2 fw-bold">Category</h5>
             <div>
-                {% for i in product_category  %}
-                <div class="flex j_between al_center">
+                {% for i in product_category %}
+                <div class="d-flex align-items-center justify-content-between sm border p-2 my-3 rounded ">
                     <div>
-                        <input type="radio" name="filter_category" id="">
-                        <label for="">{{i.name}}</label>
+                        <img width="30" class="img-fluid" src="{{i.image.url}}" alt="">
+                        <span class="ps-2 mb-0 fw-bold">{{i.name}}</span>
                     </div>
-                    <p>[{{i.total_items}}]</p>
+                    <p class="mb-0 btn btn-sm btn-outline-success   ">11</p>
                 </div>
                 {% endfor %}
             </div>
         </div>
-        <!-- filter by price -->
-        <div class="gray pys">
-            <h6 class="filter_title">Filter By Price</h6>
-            <hr>
-            <div class="pys">
-                <input type="range" name="" id="">
-                <p class="pys"><span class="black bold">Price: </span> $20 - $250</p>
-                <input class="btn btn_primary" type="button" value="Filter">
-            </div>
-        </div>
-        <!-- filter by sub category -->
-        <div class="gray pys">
-            <h6 class="filter_title">Filter By Sub Category</h6>
-            <hr>
-            <div class="pys">
-                <div class="flex j_between al_center">
+        <div class="mt-4 shadow rounded p-3">
+            <h5 class=" border-bottom pb-2 fw-bold">Status</h5>
+            <div class="sm fw-bold">
+                <div class="my-1 d-flex justify-content-between align-items-center">
                     <div>
-                        <input type="radio" name="filter_sub_category" id="">
-                        <label for="">Tomato</label>
+                        <input type="radio" name="status" id="">
+                        <label>All</label>
                     </div>
-                    <p>[20]</p>
+                    <span>[ 30 ]</span>
+                </div>
+                <div class="my-1 d-flex justify-content-between align-items-center">
+                    <div>
+                        <input type="radio" name="status" id="">
+                        <label>Trending</label>
+                    </div>
+                    <span>[ 30 ]</span>
+                </div>
+                <div class="my-1 d-flex justify-content-between align-items-center">
+                    <div>
+                        <input type="radio" name="status" id="">
+                        <label>Discount</label>
+                    </div>
+                    <span>[ 30 ]</span>
+                </div>
+                <div class="my-1 d-flex justify-content-between align-items-center">
+                    <div>
+                        <input type="radio" name="status" id="">
+                        <label>Upcoming</label>
+                    </div>
+                    <span>[ 30 ]</span>
+                </div>
+                <div class="my-1 d-flex justify-content-between align-items-center">
+                    <div>
+                        <input type="radio" name="status" id="">
+                        <label>Out of Stock</label>
+                    </div>
+                    <span>[ 30 ]</span>
+                </div>
+                <div class="my-1 d-flex justify-content-between align-items-center">
+                    <div>
+                        <input type="radio" name="status" id="">
+                        <label>Not Available</label>
+                    </div>
+                    <span>[ 30 ]</span>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
+</main>

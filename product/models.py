@@ -37,7 +37,8 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     @property 
     def current_price(self):
-        return self.price - (self.price * self.discount)/100
+        res =  self.price - (self.price * self.discount)/100
+        return round(res,2)
     
 
     def __str__(self) -> str:

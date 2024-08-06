@@ -5,63 +5,58 @@
 <main>
   <section>
     <div class="container">
-      <div class="product_container">
-        <div class="product_filtering">
+      <div class="row row-cols-2">
+        <!-- left side  -->
+        <aside class="col-3">
           {% include "./filtering_bar.html" %}
-        </div>
-        <!-- Product Side -->
-        <div class="pxs">
-          <div class="count gray flex j_between al_center">
-            <p class="pxs">We found <strong>{{1}}</strong> items for you!</p>
+        </aside>
+        <aside class="col-lg-9">
+          <div class="d-flex justify-content-between align-items-center border-bottom rounded p-3">
+            <h6 class=" m-0">We found <span class="text-success fw-bold">29</span> items for you!</h6>
             <div>
-              <label for="">Sort By:</label>
+              <label for="">Sort by</label>
               <select name="" id="">
-                <option value="rating">Default </option>
+                <option value="az">A to Z</option>
+                <option value="za">Z to a</option>
+                <option value="price">Price</option>
                 <option value="new">New</option>
-                <option value="rating">Rating </option>
-                <option value="name_A">Name (A-Z)</option>
-                <option value="name_Z">Name (Z-A)</option>
-
               </select>
             </div>
           </div>
-          <a class="product_row">
-            {% for i in products %}
-            <div class="">
-              <div class="product_card">
-                <div class="badge bold">
-                  {% if i.discount > 0 %}
-                  <p class="gray"><del>${{i.price}}</del><span class="fs pxs red">{{i.discount}}% off</span></p>
-                  {% endif %}
-                </div>
-                <div class="img_box flex al_center">
-                  <img src="{{i.photo.url}}" alt="">
-                </div>
-                <div>
-                  <div class="info ">
-                    <div class="flex j_between al_center">
-                      <p class="fs">{{i.category}}</p>
-                      <div class="fs">
-                        ⭐ &Tab; ({{i.rating}})
+          <!-- product section -->
+          <section class="mt-4">
+            <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-3">
+              {% for i in products %}
+              <div>
+                <div class="card p-2">
+                  <div style="height: 120px;" class="d-flex align-items-center justify-content-between">
+                    <img class="img-fluid" src="{{i.photo.url}}" alt="">
+                  </div>
+                  <div style="height: 150px;">
+                    <div class="d-flex flex-column justify-content-around h-100">
+                      <span class="sm">{{i.category.name}}</span>
+                      <h6 class="sm py-1 fw-bold">Fresh {{i.name}}</h6>
+                      <div class="sm">
+                        <span>⭐</span>
+                        <span class="ms-4">({{i.rating}})</span>
                       </div>
-                    </div>
-                    <h6 class=" fm">{{i.name}}</h6>
-                    <p class="fs">By <span class="green bold">{{i.seller.store_name}}</span></p>
-                    <div class="flex j_between al_center">
-                      <div>
-                        <h5>${{i.current_price}}/{{i.unit}}</h5>
+                      <h6 class="text-muted sm">By <span class="text-success">{{i.seller.store_name}}</span></h6>
+                      <div class="d-flex align-items-center justify-content-between">
+                        <h6 class="text-success fw-bold">${{i.current_price}}
+                          {% if i.discount > 0 %}
+                            <del class="text-muted sm">{{i.price}}</del>
+                          {% endif %}
+                        </h6>
+                        <div><a class="btn btn-sm btn-success" href="">Add</a></div>
                       </div>
-                      <button class="btn btn_primary">
-                        <img src="{% static 'images/icon/cart_btn.png' %}" alt="">
-                      </button>
                     </div>
                   </div>
                 </div>
               </div>
+              {% endfor %}
             </div>
-            {% endfor %}
-          </a>
-        </div>
+          </section>
+        </aside>
       </div>
     </div>
   </section>

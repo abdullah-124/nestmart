@@ -11,4 +11,4 @@ def home(req):
 
     # print(context)
     
-    return render(req,'./home.html', {'category':context,'dumy': category})
+    return render(req,'../templates/base.html', {'category':context,'main_category': category})
