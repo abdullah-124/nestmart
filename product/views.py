@@ -5,11 +5,11 @@ from category.models import Product_category
 # Create your views here.
 
 def products(req):
-    products = Product.objects.all()
+    products = Product.objects.all().order_by('?')
     products_category = Product_category.objects.all()
     context = {
         'products': products,
-        'product_category': products_category
+        # 'product_category': products_category
     }
     return render(req, './products.html', context=context)
 

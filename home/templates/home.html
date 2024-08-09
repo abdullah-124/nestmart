@@ -1,8 +1,12 @@
 <!DOCTYPE html>
+{% extends "base.html" %}
+{% block body %}
+
 <main class="container">
-    <!-- slider -->
-     <div>
-        {% include 'home_slider.html' %}
-        {% include "home_card.html" %}
-     </div>
+   <!-- slider -->
+   <div>
+      {% include 'home_slider.html' %}
+      {% include "home_card.html" %}
+   </div>
 </main>
+{% endblock body %}

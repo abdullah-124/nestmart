@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 from category.models import Product_category,Sub_Category
 from origin.models import Origin,Brand
 from seller.models import Seller
@@ -27,7 +28,7 @@ class Product(models.Model):
     unit = models.CharField(max_length=10)
     discount = models.DecimalField(max_digits=3,decimal_places=1, default=0)
     status = models.CharField(max_length=20, choices=PRODUCT_STATUS, default='Sale')
-    mfg_date = models.DateField(null=True,blank=True)
+    mfg_date = models.DateField(null=True,blank=True, default=date.today)
     exp_date = models.DateField(null=True, blank=True)
     sold_quantity = models.IntegerField(default=0,null=True)
     origin = models.ForeignKey(Origin,on_delete=models.CASCADE,null=True, blank=True)

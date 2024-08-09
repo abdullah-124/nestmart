@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <main>
     <section>
-        <div class=" shadow rounded p-3">
+        <div class=" border rounded-3 p-3">
             <h5 class="border-bottom pb-2 fw-bold">Category</h5>
             <div>
-                {% for i in product_category %}
+                {% for i in category %}
                 <div class="d-flex align-items-center justify-content-between sm border p-2 my-3 rounded ">
                     <div>
                         <img width="30" class="img-fluid" src="{{i.image.url}}" alt="">
-                        <span class="ps-2 mb-0 fw-bold">{{i.name}}</span>
+                        <a class="ps-2 mb-0 fw-bold">{{i.name}}</a>
                     </div>
-                    <p class="mb-0 btn btn-sm btn-outline-success   ">11</p>
+                    <p class="mb-0 btn btn-sm btn-outline-success   ">{{i.count_product}}</p>
                 </div>
                 {% endfor %}
             </div>
         </div>
-        <div class="mt-4 shadow rounded p-3">
+        <div class="mt-4 border rounded-3 p-3">
             <h5 class=" border-bottom pb-2 fw-bold">Status</h5>
-            <div class="sm fw-bold">
+            <div class="sm fw-semibold">
                 <div class="my-1 d-flex justify-content-between align-items-center">
                     <div>
                         <input type="radio" name="status" id="">
@@ -27,7 +27,7 @@
                 </div>
                 <div class="my-1 d-flex justify-content-between align-items-center">
                     <div>
-                        <input type="radio" name="status" id="">
+                        <input class="" type="radio" name="status" id="">
                         <label>Trending</label>
                     </div>
                     <span>[ 30 ]</span>

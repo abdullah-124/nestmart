@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 {% load static %}
+
 <main class="home_card_main mt-5">
     <section class="container">
-        <div>
-            <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-                <div class="home_card">
-                    <img class="img-fluid" src="{% static 'images/banner/home_card1.png' %}" alt="">
-                    <div class="text">
-                        <h5>Everyday Fresh & Clean with Our Products</h5>
-                        <a class="btn btn-success">Shop Now</a>
-                    </div>
+          <div class=" border row row-cols-1 row-cols-lg-3 row-cols-md-2">
+            <!-- 1 -->
+            <div class="home_card py-5">
+                <div>
+                    <img class=" img-fluid p-1" src="{% static 'images/banner/home_card1.png' %}" alt="">
                 </div>
-                <div class="home_card">
-                    <img class="img-fluid" src="{% static 'images/banner/home_card2.png' %}" alt="">
-                    <div class="text">
-                        <h5>Make your Breakfast Healthy and Easy</h5>
-                        <a class="btn btn-success">Shop Now</a>
-                    </div>
-                </div>
-                <div class="home_card">
-                    <img class="img-fluid" src="{% static 'images/banner/home_card3.png' %}" alt="">
-                    <div class="text">
-                        <h5>The best Organic Products Online</h5>
-                        <a class="btn btn-success">Shop Now</a>
-                    </div>
+                <div class="text ps-4 ">
+                    <h5 >Everyday Fresh & Clean with Our Product</h5>
+                    <a class="btn btn-sm btn-success" href="">Shop Now</a>
                 </div>
             </div>
+            <!-- 2 -->
+            <div class="home_card py-5">
+                <div>
+                    <img class=" img-fluid p-1" src="{% static 'images/banner/home_card2.png' %}" alt="">
+                </div>
+                <div class="text ps-4">
+                    <h5 >Make your Breakfast Healthy and Easy</h5>
+                    <a class="btn btn-sm btn-success" href="">Shop Now</a>
+                </div>
+            </div>
+            <!-- 3 -->
+            <div class="home_card py-5">
+                <div>
+                    <img class=" img-fluid p-1" src="{% static 'images/banner/home_card3.png' %}" alt="">
+                </div>
+                <div class="text ps-4">
+                    <h5 >The best Organic Products Online</h5>
+                    <a class="btn btn-sm btn-success" href="">Shop Now</a>
+                </div>
+            </div>
+          </div>
         </div>
         <!-- Category Card -->
-        <div class="my-4">
+        <div class="my-5">
             <div class="d-flex flex-wrap justify-content-between align-items-end">
                 <h3>Featured Categories</h3>
                 <div>
                     {% for i in category %}
-                    <a class="px-1 sm" href="">{{i}}</a>
+                    <a class="px-1 sm" href="">{{i.name}}</a>
                     {% endfor %}
                 </div>
             </div>
             <div  class="category_wrapper mt-3">
-                {% for name,i in category.items %}
+                {% for x,i in category.items %}
                 <!-- <p>{{name}}</p> -->
                 {% for j in i %}
                 <div class="category_card" >
@@ -49,6 +58,6 @@
                 {% endfor %}
             </div>
         </div>
-        
+        <h1>this is categoy{{category}}</h1>
     </section>
 </main>

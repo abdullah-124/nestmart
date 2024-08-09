@@ -9,6 +9,10 @@ class Product_category(models.Model):
     
     def __str__(self):
         return self.name
+    @property
+    def count_product(self):
+        return self.product_set.count()
+    
     
 class Sub_Category(models.Model):
     name = models.CharField(max_length=30, unique=True)
@@ -17,4 +21,10 @@ class Sub_Category(models.Model):
     
     def __str__(self) -> str:
         return f"{self.name}"
+    @property
+    def count_product(self):
+        return self.product_set.count()
+    class Meta:
+        ordering = ['name']
+    
     

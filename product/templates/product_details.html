@@ -2,52 +2,46 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
-<main style="min-height: 90vh;">
-    <header>
-        <p class="text-success">{{product.category}} <span class="mx-3">></span> <span>{{product.sub_category}}</span>
-        </p>
-        <hr>
-    </header>
-    <section>
-        <div class="f-center">
-            <div class="image_side ">
-                <div class="border-muted p-2">
-                    <img class="img-fluid" src="{{product.photo.url}}" alt="">
+  <main>
+    <section class="container">
+        <div class="row">
+            <div class="col-9">
+                <div class="align-items-center row row-cols-lg-2 row-cols-sm-1">
+                    <div class="border rounded p-3">
+                        <img class="img-fluid w-100" src="{{product.photo.url}}" alt="">
+                    </div>
+                    <div>
+                        <div class="info p-2">
+                            <a href="" class="btn btn-sm btn-outline-info">{{product.status}}</a>
+                            <h2 class="m-0 my-2 fw-bold">{{product.name}}</h2>
+                            <div>⭐ <span class="ms-5">({{product.rating}})</span></div>
+                            <div class="my-3 d-flex align-items-center">
+                                <h1 class="fw-bold text-success">${{product.current_price}}/{{product.unit}}</h1>
+                                <div class="ms-3">
+                                    {% if product.discount > 0 %}
+                                      <h6 class="m-0 p-0 text-warning">{{product.discount}} % off</h6>
+                                      <h3 class="m-0 p-0 text-muted"><del>${{product.price}}</del></h3>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <p>{{product.description|slice:100}}</p>
+                            <div class="product_detail_action d-flex align-items-center">
+                                <form class="d-flex align-items-center" action="">
+                                    <input class="me-2" type="number" value="1" name="" id="">
+                                    <button class="btn btn-success" type="submit">Add to cart</button>
+                                </form>
+                                <a class="mx-2 btn btn-outline-success">
+                                    <img width="20" src="{% static 'images/icon/wishlist.png' %}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="detaile_side">
-                <div class="">
-                    <button class="btn">{{product.status}}</button>
-                    <h2 class="f-bold">{{product.name}}</h2>
-                    <h5>By <span class="f-bold text-primary">{{product.seller.store_name}}</span></h5>
-                    <div>⭐<span class="ms-4">({{product.total_review}})</span></div>
-                    <div>
-                        {% if product.discount is not 0.0 %}
-                        <h3 class="text-muted">
-                            $<del>{{product.price}}</del>/{{product.unit}}
-                            <span class="sm text-danger fw-bold">-{{product.discount}}% Off</span>
-                        </h3>
-                        {% endif %}
-                        <h1 class="text-primary">
-                            ${{product.current_price}}/{{product.unit}}
-                        </h1>
-                    </div>
-                    <form class="product_info" action="">
-                        <input type="number" value="1" name="" id="">
-                        <button class="btn btn-success">Add To Cart</button>
-                        <button onclick="wishlist_add(event)" class="btn btn-outline-secondary"><img src="{% static 'images/icon/wishlist.png' %}"
-                                alt=""></button>
-                    </form>
-                </div>
+            <div class="col-3">
+                {% include "./filtering_bar.html" %}
             </div>
         </div>
     </section>
-</main>
-{% include "common/stay_home_banner.html" %}
-<script>
-    function wishlist_add(e){
-        e.preventDefault()
-        console.log('hellllooo')
-    }
-</script>
+  </main>
 {% endblock body %}
