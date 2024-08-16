@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<div class="d-flex justify-content-between align-items-center border rounded p-2">
+    <h6 class="sm m-0">We found <span class="text-success fw-bold">{{products|length}}</span> items for you!</h6>
+    <form method="get" class="d-inline-flex sm">
+      <label for="">Sort by</label>
+      <select class="ms-1 form-select" name="sort_by" id="sort_by" onchange="this.form.submit()">
+        <option value="">--Select--</option>
+        <option {% if sort_by == '-view_count' %} selected {% endif %}  value="-view_count">
+            Trending
+        </option>
+        <option {% if sort_by == '-rating' %} selected {% endif %}  value="-rating">
+            Top Rated
+        </option>
+        <option {% if sort_by == '-discount' %} selected {% endif %}  value="-discount">
+            Discount
+        </option>
+        <option {% if sort_by == '-sold_quantity' %} selected {% endif %}  value="-sold_quantity">
+            Top Selling
+        </option>
+        <option {% if sort_by == 'name' %} selected {% endif %} value="name">
+            A to Z
+        </option>
+        <option {% if sort_by == '-name' %} selected {% endif %}  value="-name">
+            Z to a
+        </option>
+        <option {% if sort_by == '-price' %} selected {% endif %}  value="-price">
+            High to low
+        </option>
+        <option {% if sort_by == 'price' %} selected {% endif %}  value="price">
+            Low to high
+        </option>
+        <option {% if sort_by == '-created_at' %} selected {% endif %}  value="-created_at">
+            New
+        </option>
+        <option {% if sort_by == 'created_at' %} selected {% endif %}  value="created_at">
+            Old
+        </option>
+      </select>
+    </form>
+  </div>

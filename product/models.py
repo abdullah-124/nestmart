@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 from category.models import Product_category,Sub_Category
+from review.models import Review
 from origin.models import Origin,Brand
 from seller.models import Seller
 import math
@@ -13,6 +14,7 @@ PRODUCT_STATUS = (
     ('Deals of the day', 'Deals of the day'),
     ('Trending', 'Trending'),
 )
+DELEVERY_MASSAGE = 'Delevery need to 2 hour for local items, 7 working days for thus items thats deleverd from outside of you city'
 class Product(models.Model):
     name = models.CharField(max_length=100)
     slug = models.SlugField(max_length=120)
@@ -22,7 +24,7 @@ class Product(models.Model):
     photo = models.ImageField(upload_to='images/product/prd')
     photo1 = models.ImageField(upload_to='images/product/prd',null=True, blank=True)
     photo2 = models.ImageField(upload_to='images/product/prd',null=True, blank=True)
-    seller = models.ForeignKey(Seller,on_delete=models.CASCADE)
+    seller = models.ForeignKey(Seller,on_delete=models.CASCADE, related_name='products')
     stock_quantity = models.IntegerField()
     description = models.TextField()
     unit = models.CharField(max_length=10)
@@ -30,18 +32,24 @@ class Product(models.Model):
     status = models.CharField(max_length=20, choices=PRODUCT_STATUS, default='Sale')
     mfg_date = models.DateField(null=True,blank=True, default=date.today)
     exp_date = models.DateField(null=True, blank=True)
-    sold_quantity = models.IntegerField(default=0,null=True)
+    sold_quantity = models.PositiveIntegerField(default=0,null=True)
     origin = models.ForeignKey(Origin,on_delete=models.CASCADE,null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE,null=True, blank=True)
     total_review = models.IntegerField(default=0, null=True)
     rating = models.DecimalField(decimal_places=2,default=0.00,null=True,max_digits=3)
+    view_count = models.PositiveIntegerField(default=0,null=True)
+    delevery_massage = models.TextField(default=DELEVERY_MASSAGE, null = True)
+    local_delevery = models.BooleanField(default=True, null=True)
+    update_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    review = models.ManyToManyField(Review, null=True,blank=True)
     @property 
     def current_price(self):
         res =  self.price - (self.price * self.discount)/100
         return round(res,2)
     
-
+    class Meta:
+        ordering = ['sub_category']
     def __str__(self) -> str:
         return f'{self.category}/{self.name}'
     

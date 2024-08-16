@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<main>
+    <div class="border p-3">
+        <h6 class="fw-bold">Packaging & Delivery</h6>
+        <hr>
+        <p class="text-secondary poppins-light-italic">{{product.delevery_massage}}</p>
+        <div class="list_style">
+            <h6 class="">
+                <span>Brand</span>: {{product.brand}}
+            </h6>
+            <h6 class="">
+                <span>Exp Date</span>: {{product.exp_date}}
+            </h6>
+            <h6 class="">
+                <span class="sm">Mfg/Collectiong/Packing Date</span>:
+                {{product.mfg_date}}
+            </h6>
+
+            <h6 class="">
+                <span>Local Delevery Area</span>:{{product.seller.origin}}
+            </h6>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDisabled" disabled
+                {% if product.local_delevery %} 
+                    checked
+                {% endif %}>
+                <label class="form-check-label" for="flexCheckDisabled">
+                    Local Delevery
+                </label>
+            </div>
+        </div>
+    </div>
+</main>

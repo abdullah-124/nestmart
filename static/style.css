@@ -51,3 +51,39 @@
     text-align: center;
     border-radius: 5px;
 }
+.list_style h6 span{
+    width: 80px;
+    font-family: 'Poppins',sans-serif;
+    font-weight: 500;
+}
+
+/* seller card */
+.seller_card{
+    text-align: center;
+}
+.seller_card .cover_logo{
+    height: 100px;
+    padding: 10px;
+    border-radius: 4px 4px 0 0;
+    display: flex;
+    align-items: center;
+}
+.seller_card .user_info{
+    
+    transform: translateY(-30px);
+}
+.seller_card .user_logo{
+    margin: auto;
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 10px #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+
+}
+.seller_card .user_logo h6{
+    font-size: 30px;
+}

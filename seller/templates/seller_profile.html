@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+<main>
+  {% block header %}
+  <div class="container">
+    <div>
+      <div style="height: 200px;" class="cover_photo bg-warning">
+
+      </div>
+      <div class=" border seller_info p-3">
+        <div style="transform: translateY(-75px);" class="d-flex align-items-end">
+          <div style="height: 150px; width:150px"
+            class="bg-light rounded-3 shadow p-2 seller_logo d-flex align-items-center justify-content-center">
+            <img class="img-fluid" src="{{store.photo.url}}" alt="">
+          </div>
+          <div class="ms-4 ">
+            <h5 class="fw-bold">{{store.store_name}}</h5>
+            <p class="sm m-0">{{store.origin}}</p>
+          </div>
+          <hr>
+        </div>
+        <div class="sm text-secondary">
+          <div class="row row-cols-lg-4 row-cols-md-2 row-cols-1 gx-2">
+            <div class="border ">
+              <div class=" p-3">
+                <span class="m-0">Total Product</span>
+                <h6 class="text-success fw-bold">{{store.total_product}}</h6>
+                <span class="m-0">Total Sells</span>
+                <h6 class="text-success fw-bold">{{store.product_sell}}</h6>
+                <span>Revenue</span>
+                <h6 class="text-success fw-bold">{{store.sell_amount}}</h6>
+              </div>
+            </div>
+            <div class="border ">
+              <div class=" p-3">
+                <h6 class="sm fw-bold">Contats</h6>
+                <p class="m-0">Manager:
+                  <span> {{store.user.first_name}} {{store.user.last_name}}</span>
+                </p>
+                <p class="m-0">Mobile:
+                  <span> {{store.coustomer.mobile_num}}</span>
+                </p>
+                <p class="sm m-0">{{store.user.email}}</p>
+              </div>
+            </div>
+            <div class=" border">
+              <div class=" p-3">
+                <h6 class="sm fw-bold">Address</h6>
+                <p class="m-0">Country: {{store.origin.country}}</p>
+                <p class="m-0">Postal: {{store.origin.postal}}</p>
+                <p class="m-0">District: {{store.origin.district}}</p>
+                <p class="m-0">Address: {{store.origin.address}}</p>
+              </div>
+
+            </div>
+            <div class="border p-2">
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="border mt-3 p-3">
+      <h5 class="mb-3">Product By Seller</h5>
+      <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 g-2">
+        {% for i in products %}
+          {% include "common/product_card.html" %}
+        {% endfor %}
+      </div>
+    </section>
+  </div>
+  {% endblock header %}
+</main>

@@ -2,12 +2,12 @@
 {% extends "base.html" %}
 {% load static %}
 {% block body %}
-  <main>
+<main>
     <section class="container">
-        <div class="row">
-            <div class="col-9">
-                <div class="align-items-center row row-cols-lg-2 row-cols-sm-1">
-                    <div class="border rounded p-3">
+        <div class="row row-cols-lg-2 row-cols-1">
+            <div class="col-lg-8 col-12">
+                <div class="py-3 border align-items-center row row-cols-lg-2 row-cols-md-2 row-cols-1">
+                    <div class=" rounded p-3">
                         <img class="img-fluid w-100" src="{{product.photo.url}}" alt="">
                     </div>
                     <div>
@@ -19,8 +19,8 @@
                                 <h1 class="fw-bold text-success">${{product.current_price}}/{{product.unit}}</h1>
                                 <div class="ms-3">
                                     {% if product.discount > 0 %}
-                                      <h6 class="m-0 p-0 text-warning">{{product.discount}} % off</h6>
-                                      <h3 class="m-0 p-0 text-muted"><del>${{product.price}}</del></h3>
+                                    <h6 class="m-0 p-0 text-warning">{{product.discount}} % off</h6>
+                                    <h3 class="m-0 p-0 text-muted"><del>${{product.price}}</del></h3>
                                     {% endif %}
                                 </div>
                             </div>
@@ -37,11 +37,53 @@
                         </div>
                     </div>
                 </div>
+                <div class="row border mt-4 deteil_info">
+                    <div class="col-12 p-3">
+                        <div class="">
+
+                            <a class="btn btn-sm btn-outline-success" href="">Description</a>
+                            <a class="btn btn-sm btn-outline-success" href="">Seller</a>
+                            <a class="btn btn-sm btn-outline-success" href="">Reviews</a>
+                            <button class="btn btn-sm border-success">
+                                <img width="19" src="{% static 'images/icon/view.png' %}" alt="">
+                                <span class="sm text-secondary">({{product.view_count}})</span>
+                            </button>
+                            <hr>
+                        </div>
+                        <section>
+                            <div id="description">
+                                <p class="text-secondary font-monospace">{{product.description}}</p>
+                                <div class="list_style">
+                                    <h6 class="">
+                                        <span>Sold</span>: {{product.sold_quantity}}
+                                    </h6>
+                                    <h6 class="">
+                                        <span>Status</span>: {{product.status}}
+                                    </h6>
+                                    <h6 class="">
+                                        <span>Keyword</span>: {{product.category}}, {{product.sub_category}}
+                                    </h6>
+                                    <h6 class="">
+                                        <span>Upload At</span>: {{product.created_at}}
+                                    </h6>
+                                    <h6 class="">
+                                        <span>Updated At</span>: {{product.update_at}}
+                                    </h6>
+                                    <h6 class="">
+                                        <span>Origin</span>: {{product.origin}}
+                                    </h6>
+                                </div>
+
+                            </div>
+                        </section>
+                    </div>
+                </div>
             </div>
-            <div class="col-3">
-                {% include "./filtering_bar.html" %}
+            <div class="col-lg-4">
+                {% include "./details_sidebar.html" %}
+               
             </div>
         </div>
     </section>
-  </main>
+</main>
 {% endblock body %}

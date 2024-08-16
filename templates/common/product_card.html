@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<div>
+    <div class="card p-2">
+      <div style="height: 130px;" class="d-flex align-items-center justify-content-between">
+        <img class="img-fluid" src="{{i.photo.url}}" alt="">
+      </div>
+      <div style="height: 150px;">
+        <div class="d-flex flex-column justify-content-around h-100">
+          <span class="sm text-secondary">{{i.category.name}}</span>
+          <h6 class="sm py-1 fw-bold">{{i.name}}</h6>
+          <div class="sm">
+            <span>⭐</span>
+            <span class="ms-4">({{i.rating}})</span>
+          </div>
+          <h6 class="text-muted sm">By <span class="text-success">{{i.seller.store_name}}</span></h6>
+          <div class="d-inline-flex align-items-center justify-content-between">
+            <h6 class="m-0 text-success fw-bold">
+              {% if i.discount > 0 %}
+              <del class="text-muted sm">{{i.price}}/{{i.unit}}<br></del>
+              {% endif %}
+              ${{i.current_price}}/<span class="sm m-0">{{i.unit}}</span>
+            </h6>
+            <div>
+              <a class="btn btn-sm btn-success" href="{% url 'product_details' i.id %}">
+                Add</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

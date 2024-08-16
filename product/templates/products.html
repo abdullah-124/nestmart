@@ -7,45 +7,39 @@
     <div class="container">
       <div class="row row-cols-2">
         <!-- left side  -->
-        <aside class="col-3">
+        <aside class="col-lg-3 col-md-4 d-none d-md-block d-lg-block">
           {% include "./filtering_bar.html" %}
         </aside>
-        <aside class="col-lg-9">
-          <div class="d-flex justify-content-between align-items-center border rounded p-3">
-            <h6 class=" m-0">We found <span class="text-success fw-bold">29</span> items for you!</h6>
-            <div class="d-inline-flex">
-              <label for="">Sort by</label>
-              <select class="ms-1 form-select" name="" id="">
-                <option value="az">A to Z</option>
-                <option value="za">Z to a</option>
-                <option value="price">Price</option>
-                <option value="new">New</option>
-              </select>
-            </div>
-          </div>
+        <aside class="col-lg-9 col-md-8 col-12">
+          {% if products|length == 0 %}
+          {% include "common/404.html" %}
+
+          {% else %}
+          {% include "./product_header.html" %}
           <!-- product section -->
           <section class="mt-4">
-            <div class="row row-cols-lg-5 row-cols-md-3 row-cols-sm-2 g-3">
+            <div class="row row-cols-lg-5 row-cols-md-3 row-cols-2 g-2">
               {% for i in products %}
               <div>
                 <div class="card p-2">
-                  <div style="height: 120px;" class="d-flex align-items-center justify-content-between">
+                  <div style="height: 130px;" class="d-flex align-items-center justify-content-between">
                     <img class="img-fluid" src="{{i.photo.url}}" alt="">
                   </div>
                   <div style="height: 150px;">
                     <div class="d-flex flex-column justify-content-around h-100">
                       <span class="sm text-secondary">{{i.category.name}}</span>
-                      <h6 class="sm py-1 fw-bold">Fresh {{i.name}}</h6>
+                      <h6 class="sm py-1 fw-bold">{{i.name}}</h6>
                       <div class="sm">
                         <span>⭐</span>
                         <span class="ms-4">({{i.rating}})</span>
                       </div>
                       <h6 class="text-muted sm">By <span class="text-success">{{i.seller.store_name}}</span></h6>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <h6 class="m-0 text-success fw-bold">${{i.current_price}}
+                      <div class="d-inline-flex align-items-center justify-content-between">
+                        <h6 class="m-0 text-success fw-bold">
                           {% if i.discount > 0 %}
-                          <del class="text-muted sm">{{i.price}}</del>
+                          <del class="text-muted sm">{{i.price}}/{{i.unit}}<br></del>
                           {% endif %}
+                          ${{i.current_price}}/<span class="sm m-0">{{i.unit}}</span>
                         </h6>
                         <div>
                           <a class="btn btn-sm btn-success" href="{% url 'product_details' i.id %}">
@@ -59,6 +53,8 @@
               {% endfor %}
             </div>
           </section>
+          
+        {% endif %}
         </aside>
       </div>
     </div>

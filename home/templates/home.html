@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
+<div class="">
+   {% block header %}
+   <!-- slider -->
+   {% include 'home_slider.html' %}
+   <!-- card -->
+   {% include "home_card.html" %}
+   {% endblock header %}
+</div>
 {% block body %}
 
 <main class="container">
-   <!-- slider -->
-   <div>
-      {% include 'home_slider.html' %}
-      {% include "home_card.html" %}
-   </div>
+   <!-- Product by various types of cataegory -->
+   {% include "./product_by_category.html" %}
 </main>
 {% endblock body %}
