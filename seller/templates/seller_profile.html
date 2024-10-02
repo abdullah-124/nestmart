@@ -8,7 +8,7 @@
 
       </div>
       <div class=" border seller_info p-3">
-        <div style="transform: translateY(-75px);" class="d-flex align-items-end">
+        <div style="transform: translateY(-85px);" class="d-flex align-items-end">
           <div style="height: 150px; width:150px"
             class="bg-light rounded-3 shadow p-2 seller_logo d-flex align-items-center justify-content-center">
             <img class="img-fluid" src="{{store.photo.url}}" alt="">
@@ -60,6 +60,7 @@
         </div>
       </div>
     </div>
+    {% if products|length %}
     <section class="border mt-3 p-3">
       <h5 class="mb-3">Product By Seller</h5>
       <div class="row row-cols-lg-6 row-cols-md-4 row-cols-2 g-2">
@@ -68,6 +69,8 @@
         {% endfor %}
       </div>
     </section>
+    
+    {% endif %}
   </div>
   {% endblock header %}
 </main>

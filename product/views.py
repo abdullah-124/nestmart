@@ -41,12 +41,14 @@ def filter_by_seller(req,seller_id = None):
 class ProductDetailView(DetailView):
     model = Product
     template_name = 'product_details.html'
-    context_object_name = 'product'
 
-    def get_object(self):
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
         product = super().get_object()
+        context['product'] = product
+        context['similar_product'] = Product.objects.filter(category = product.category).exclude(id=product.id)[:6]
         # view count
         # product.view_count = product.view_count + 1 
         # product.save(update_fields=['view_count'])  
         # product.refresh_from_db()  
-        return product
+        return context

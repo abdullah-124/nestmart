@@ -6,6 +6,9 @@
     margin-left: 10px;
     position: relative;
 }
+.nav_bge img{
+    width: 15px;
+}
 .nav_bge span{
     width: 20px;
     height: 20px;
