@@ -6,17 +6,6 @@
     <title>login</title>
 </head>
 <body>
-    <fieldset style="width: 400px; margin:auto">
-        <legend><h1><code>Login</code></h1></legend>
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            <label for="Username">Username &Tab; :</label>
-            <input type="text" name="username" id=""><br><br>
-            <label for="Password">Password &Tab; :</label>
-            <input type="password" name="password" id=""><br><br>
-            <input type="submit" value="Login"><br><br>
-            <p>Don't have any account <a href="{% url 'register' %}">Register</a></p>
-        </form>
-    </fieldset>
+    
 </body>
 </html>

@@ -15,8 +15,6 @@ def user_register(req):
             return JsonResponse({
                 "code":"200",
                 "massage":"Account Created Successfull",
-                "username": form.cleaned_data['username'],
-                "email": form.cleaned_data['email'],
                 })
     else :
         print('data not found')
@@ -30,5 +28,5 @@ def user_login(req):
     user = authenticate(username = username, password = password)
     if(user):
         login(req,user)
-        return JsonResponse({"username":user.username})
+        return JsonResponse({"username":'user.username'})
     return render(req,'accounts/login.html')

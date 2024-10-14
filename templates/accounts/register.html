@@ -9,49 +9,10 @@
 
 <body>
 
-    <fieldset style="width: 400px;margin:auto;">
-        <legend>
-            <h1><code>Register</code></h1>
-        </legend>
-        <table style="width: 95%;margin:auto;" cellpadding="10">
-            <tbody>
-                <form action="{% url 'register' %}" method="post">
-                    {% csrf_token %}
-                    <tr>
-                        <td>First Name</td>
-                        <td>: {{form.first_name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Last Name</td>
-                        <td>: {{form.last_name}}</td>
-                    </tr>
-                    <tr>
-                        <td>Userame</td>
-                        <td>: {{form.username}}</td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td>: {{form.email}}</td>
-                    </tr>
-                    <tr>
-                        <td>Password</td>
-                        <td>: {{form.password1}}</td>
-                    </tr>
-                    <tr>
-                        <td>Confirm Password</td>
-                        <td>: {{form.password2}}</td>
-                    </tr>
-                    <tr>
-                        <td><input type="submit" value="Register">
-                            <p>
-                                have any account? <a href='{% url "login" %}'>login</a>
-                            </p>
-                        </td>
-                    </tr>
-                </form>
-            </tbody>
-        </table>
-    </fieldset>
+   <form action="">
+    {% csrf_token %}
+    {% form %}
+   </form>
 </body>
 
 </html>
