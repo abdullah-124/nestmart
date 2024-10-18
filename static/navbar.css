@@ -1,4 +1,13 @@
-
+.navbar{
+    /* background-color: #fff; */
+    backdrop-filter: blur(10px);
+}
+.nav-link{
+    color: #999 !important;
+}
+.nav-link:focus{
+    color: green !important;
+}
 .mobile_nav{
     background: white;
     position: fixed;

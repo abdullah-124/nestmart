@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>login</title>
-</head>
-<body>
+{% extends "base.html" %}
+
+
+{% block body %}
+<section>
+    <div class="row my-5">
+        <div class="col-lg-4 col-md-6 col-12 m-auto">
+            <div class="card p-4">
+                <h5 class="my-3">Sign in</h5>
+                <form action="{% url 'login' %}" method="post">
+                    {% csrf_token %}
+                    <input class="form-control" type="text" name="username" placeholder="Username"><br>
+                    <input class="form-control" type="password" name="password" id="" placeholder="Password"><br>
+                    <button class="btn btn-success my-3" type="submit">Login</button>
+                </form>
+                <p class="sm">Have't any account? <a href="{% url 'register' %}">register</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
     
-</body>
-</html>

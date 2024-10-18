@@ -5,13 +5,15 @@
 .nav_bge{
     margin-left: 10px;
     position: relative;
-}
-.nav_bge img{
-    width: 15px;
-}
-.nav_bge span{
     width: 20px;
     height: 20px;
+}
+.nav_bge img{
+    width: 18px;
+}
+.nav_bge span{
+    width: 18px;
+    height: 18px;
     background-color: #198754;
     color: #fff;
     border-radius: 50%;
@@ -29,4 +31,10 @@
 
 .sm{
     font-size: 12px;
+}
+.success{
+    background: green;
+}
+.error{
+    background: red;
 }

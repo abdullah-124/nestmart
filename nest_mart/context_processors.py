@@ -3,6 +3,7 @@ from category.models import Sub_Category,Product_category
 from seller.models import Seller
 
 def load_nav_obj(req):
+    print(req.user)
     context = dict()
     category = Product_category.objects.all()
     seller = Seller.objects.annotate(total_product = Count('products')).order_by('-total_product')
