@@ -2,7 +2,7 @@ from django.db import models
 from datetime import date
 from category.models import Product_category,Sub_Category
 from review.models import Review
-from origin.models import Origin,Brand
+from origin.models import Location,Brand
 from seller.models import Seller
 import math
 # Create your models here.
@@ -33,21 +33,24 @@ class Product(models.Model):
     mfg_date = models.DateField(null=True,blank=True, default=date.today)
     exp_date = models.DateField(null=True, blank=True)
     sold_quantity = models.PositiveIntegerField(default=0,null=True)
-    origin = models.ForeignKey(Origin,on_delete=models.CASCADE,null=True, blank=True)
+    location = models.ForeignKey(Location,on_delete=models.CASCADE,null=True, blank=True)
     brand = models.ForeignKey(Brand, on_delete=models.CASCADE,null=True, blank=True)
     total_review = models.IntegerField(default=0, null=True)
-    rating = models.DecimalField(decimal_places=2,default=0.00,null=True,max_digits=3)
+    review_count = models.IntegerField(default=0,null=True)
     view_count = models.PositiveIntegerField(default=0,null=True)
     delevery_massage = models.TextField(default=DELEVERY_MASSAGE, null = True)
-    local_delevery = models.BooleanField(default=True, null=True)
+    # local_delevery = models.BooleanField(default=True, null=True)
     update_at = models.DateTimeField(auto_now=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    review = models.ManyToManyField(Review, null=True,blank=True)
     @property 
     def current_price(self):
         res =  self.price - (self.price * self.discount)/100
         return round(res,2)
-    
+    @property
+    def avg_rating(self):
+        res = self.total_review/self.review_count
+        return round(res,1)
+        
     class Meta:
         ordering = ['sub_category']
     def __str__(self) -> str:

@@ -5,11 +5,11 @@
 .nav_bge{
     margin-left: 10px;
     position: relative;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
 }
 .nav_bge img{
-    width: 18px;
+    width: 22px;
 }
 .nav_bge span{
     width: 18px;
@@ -23,6 +23,17 @@
     text-align: center;
     font-size: 12px;
     translate: 10px -10px;
+}
+.user_bge{
+    text-align: center;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    margin-inline-start: 10px;
+}
+.user_bge img{
+    width: 100%;
+    height: 100%;
 }
 .title_h1{
     font-family: "Poppins", sans-serif;

@@ -4,7 +4,7 @@ from .models import Product
 class ProductModelAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug':('name','category','seller')}
     # list_display = [field.name for field in Product._meta.fields if field.name != "id"]
-    list_display = ['name','seller','current_price','unit','status','rating']
+    list_display = ['name','seller','current_price','unit','status',]
         
     
 admin.site.register(Product, ProductModelAdmin)

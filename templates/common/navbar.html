@@ -40,14 +40,20 @@
             <img src="{% static '/images/icon/wishlist.png' %}" alt="">
             <span>99+</span>
           </a>
-          <a class="nav_bge bg-success rounded-circle">
-
+          <a class="user_bge border border-success rounded-circle">
+            {% if user.photo %}
+              <img class=" rounded-circle" src="{{ user.photo.url }}" alt="">
+              {% else %}
+                <h5 class="m-0 text-cente rounded-circle">{{user.username|slice:":2"}}</h4>
+            {% endif %}
           </a>
         </div>
         {% else %}
-        <a href="" class="btn btn-success">Login</a>
+        <a href="{% url 'register' %}" class="btn btn-success">Login</a>
         {% endif %}
       </div>
     </div>
+    
   </nav>
+
 </section>

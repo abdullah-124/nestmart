@@ -63,6 +63,7 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'nest_mart.urls'
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+AUTH_USER_MODEL = 'accounts.Coustomer'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',

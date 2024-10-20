@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Origin
+from .models import Location
 # Register your models here.
-class OrginAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in Origin._meta.fields if field.name != "id"]
+class LocationAdmin(admin.ModelAdmin):
+    list_display = [field.name for field in Location._meta.fields if field.name != "id"]
     
-admin.site.register(Origin,OrginAdmin)
+admin.site.register(Location,LocationAdmin)
