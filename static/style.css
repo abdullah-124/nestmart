@@ -87,3 +87,36 @@
 .seller_card .user_logo h6{
     font-size: 30px;
 }
+/* Sidebar for profile page */
+
+.sidebar{
+    min-height: 90vh;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(3px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.side_bar_menu_items{
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    margin-top: 4px;
+}
+.side_bar_menu_items:hover{
+    transition: all .5s ease-in-out;
+    transform: translateX(8px);
+}
+.side_bar_menu_items img{
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+.side_bar_menu_items h6{
+    margin-bottom: 0;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+}

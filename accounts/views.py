@@ -46,6 +46,12 @@ def user_login(req):
         previous_url = req.META.get('HTTP_REFERER', '/')
         return redirect('home')
     return render(req,'accounts/login.html')
+# USER LOGOUT
+def user_logout(request):
+    if(request.user.is_authenticated):
+        logout(request)
+        return redirect('home')
+    return redirect('login')
 
 # username check exist or not
 def check_username(request):
