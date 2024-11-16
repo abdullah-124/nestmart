@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'origin',
     'home',
     'user_profile',
+    'core',
     'crispy_forms',
     "crispy_bootstrap5",
 ]

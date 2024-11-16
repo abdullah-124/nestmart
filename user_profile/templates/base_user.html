@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+{% load static %}
+
+{% block header  %}
+    {% include 'common/navbar.html' %}
+{% endblock header  %}
+    
+{% block body  %}
+    <main class="container-fluid">
+        <div class="row row-cols-lg-2">
+            <div class="col-3">
+                <div class="sidebar">
+                    <div class="h-100 p-3">
+                        
+                        <a class="side_bar_menu_items" href="{% url 'user_profile' %}">
+                            <img class="img-fluid" src="{% static 'images/icon/user.png' %}" alt="">
+                            <h6 class="">Profile</h6>
+                        </a>
+                        <a class="side_bar_menu_items" href="{% url 'my_orders' %}">
+                            <img class="img-fluid" src="{% static 'images/icon/cart1.png' %}" alt="">
+                            <h6 class="me-5">My orders</h6>
+                        </a>
+                        <a class="side_bar_menu_items" href="{% url 'my_orders' %}">
+                            <img class="img-fluid" src="{% static 'images/icon/cart1.png' %}" alt="">
+                            <h6 class="me-5">Change Password</h6>
+                        </a>
+                        
+                        <a class="side_bar_menu_items" href="{% url 'logout' %}">
+                            <img class="img-fluid" src="{% static 'images/icon/logout.png' %}" alt="">
+                            <h6 class="me-5">Logout</h6>
+                        </a>
+                        <a class="side_bar_menu_items" href="{% url 'home' %}">
+                            <img class="img-fluid" src="{% static 'images/icon/home.png' %}" alt="">
+                            <h6 class="me-5">Back to Home</h6>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <section class="col-9 user_content">
+                {% block user_content %}{% endblock %}
+                    
+            </section>
+        </div>
+    </main>
+{% endblock body  %}
+    

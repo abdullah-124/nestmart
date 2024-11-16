@@ -6,10 +6,13 @@ from .forms import RegestrationForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 from .models import Coustomer
+from core.decorators import role_required
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def user_register(req):
-    print('helllo')
+    if req.user.is_authenticated:
+        return redirect('user_profile')
     if(req.method == 'POST'):
         form = RegestrationForm(req.POST)
         if(form.is_valid()):
@@ -21,30 +24,29 @@ def user_register(req):
                 # user.is_active = False
                 # user.save()
                 login(req,user=user)
-                print(user)
                 messages.success(req, 'Registration successful! Please check your email to verify your account.')
-                return redirect('register')
+                return redirect('home')
             else:
                 messages.error(req, "Passowrd does't match")
         else :
             for error in form.errors.values():
                 messages.error(req, error)
     else :
-        print('----***----')
         form = RegestrationForm()
     return render(req,'accounts/register.html', {'form':form})
 
 # user login
 def user_login(req):
-    print('loin')
     username = req.POST.get('username')
     password = req.POST.get('password')
-    print(username,password)
     user = authenticate(username = username, password = password)
     if(user):
         login(req,user)
         previous_url = req.META.get('HTTP_REFERER', '/')
-        return redirect('home')
+        print('this is ', previous_url)
+        messages.success(req, 'Login Successfull')
+        return redirect(previous_url)
+    messages.error(req, 'Invalid username/password')
     return render(req,'accounts/login.html')
 # USER LOGOUT
 def user_logout(request):
@@ -52,6 +54,7 @@ def user_logout(request):
         logout(request)
         return redirect('home')
     return redirect('login')
+    
 
 # username check exist or not
 def check_username(request):
@@ -64,3 +67,7 @@ def check_username(request):
 
 def varificaton_msg(req):
     return render(req,'./varification_msg.html')
+
+@role_required(allowed_roles=['admin'])
+def admin_dashboard(request):
+    return render(request, 'admin_dashboard.html')

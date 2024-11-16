@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-
 {% block body %}
 {% include "common/navbar.html" %}
 <section>
@@ -8,7 +7,7 @@
         <div class="col-lg-4 col-md-6 col-12 m-auto">
             <div class="card p-4">
                 <h5 class="my-3">Register</h5>
-                
+
                 <form action="" method="post">
                     {% csrf_token %}
                     <!-- {{form|crispy}} -->
@@ -36,11 +35,12 @@
                     </div>
                     <!-- massage -->
                     {% if messages %}
-                    <div class="messages">
+                    <ul class=" messages">
                         {% for message in messages %}
-                        <p class="{{ message.tags }} text-light sm p-2 rounded">{{ message }}</p>
-                            {% endfor %}
-                    </div>
+                        <li class="border {{ message.tags }} text-light sm p-2 rounded">{{ message }}</li>
+                        
+                        {% endfor %}
+                    </ul>
                     {% endif %}
                     <input class="btn btn-success my-3" type="submit" value="Register">
                 </form>
@@ -63,7 +63,7 @@
             if (username) {
                 // Delay for 500ms before sending the request
                 timeout = setTimeout(() => {
-                    fetch(`register/check-username/?username=${encodeURIComponent(username)}`)
+                    fetch(`check-username/?username=${encodeURIComponent(username)}`)
                         .then(response => response.json())
                         .then(data => {
                             if (data.exists) {

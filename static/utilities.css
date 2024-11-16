@@ -29,3 +29,6 @@ a:hover{
     color: seagreen;
     cursor: pointer;
 }
+ul{
+    padding: 0 !important;
+}

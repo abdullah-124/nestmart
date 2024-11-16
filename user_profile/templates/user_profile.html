@@ -1,19 +1,52 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+{% extends "base_user.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block user_content %}
+<h6 class="fw-bold">Edit Profile</h6>
+<form action="" class="">
+    {% csrf_token %}
+    <!-- {{form|crispy}} -->
+    <div class="row">
 
-{% block header  %}
-    {% include 'common/navbar.html' %}
-{% endblock header  %}
-    
-{% block body  %}
-    <main>
-        <div class="d-flex">
-            <div>
-                {% include 'side_bar.html' %}
-            </div>
-            <section>
+        <aside class="col-12 col-lg-9">
+            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1">
+                <div class="">
+                    <h6>Username</h6>
+                    {{form.username}}
+                </div>
+                <div class="">
+                    <h6>Email</h6>
+                    {{form.email}}
+                </div>
+                <div class="">
+                    <h6>First Name</h6>
+                    {{form.first_name}}
+                </div>
+                <div class="">
+                    <h6>Last Name</h6>
+                    {{form.last_name}}
+                </div>
+                <div class="">
+                    <h6>Mobile Num</h6>
+                    {{form.mobile_num}}
+                </div>
+                <div class="col-12 my-3">
+                    <h6>Address</h6>
+                    <input class="form-control" id="location_input" type="text" placeholder="Type to search..."
+                        name="location">
+                    <ul id="suggestions_box"></ul>
+                </div>
                 
-            </section>
-        </div>
-    </main>
-{% endblock body  %}
-    
+
+                <input id="submit_btn" type="submit" value="Save Changes" class="my-4 btn btn-success " disabled>
+            </div>
+        </aside>
+        <aside class="mx-auto col-5 col-lg-3">
+            {{form.photo}}
+        </aside>
+    </div>
+</form>
+
+<script src="{% static 'js/user_profile.js' %}"></script>
+{% endblock user_content %}
