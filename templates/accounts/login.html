@@ -27,6 +27,27 @@
             </div>
         </div>
     </div>
+    <!-- MODAL  -->
+    {% include 'common/modal.html' %}
+    <script>
+        // Show modal on login success
+        const isAuthenticated = {{ user.is_authenticated|yesno:"true,false" }};
+        console.log(isAuthenticated)
+        if (isAuthenticated) {
+          const modal = new bootstrap.Modal(document.getElementById('successModal'));
+          const modal_massage = document.getElementById('modal_massage')
+          modal_massage.innerHTML = `
+          <h5>Wellcome Back</h5>
+          <p class="text-success">Login Successfull</p>
+          `
+          modal.show();
+    
+          // Redirect after a delay
+          setTimeout(() => {
+            window.location.href = "{% url 'user_profile' %}"; // Replace 'redirect_url_name' with the target URL
+          }, 2000);
+        }
+      </script>
 </section>
 {% endblock body %}
     

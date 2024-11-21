@@ -45,16 +45,16 @@
             <button class="btn user_bge border border-success rounded-circle dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
               
                 {% if user.photo %}
-                  <img class="img-fluid rounded-circle" src="{{ user.photo.url }}" alt="">
+                  <img class=" rounded-circle" src="{{ user.photo.url }}" alt="">
                   {% else %}
-                    <h5 class="m-0 text-cente rounded-circle">{{user.username|slice:":2"}}</h4>
+                    <h5 class="m-0 text-center rounded-circle">{{user.username|slice:":2"}}</h4>
                 {% endif %}
             </button>
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-lg-end">
               <li><a class="sm dropdown-item fw-bold" >{{user.username}} <br>
                 {{user.email}}
               </a></li>
-              <li><a class="dropdown-item" href="{% url 'user_profile' %}">Dashboard</a></li>
+              <li><a class="dropdown-item" href="{% url 'user_profile' %}">Profile</a></li>
               <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
             </ul>
           </div>
@@ -66,5 +66,4 @@
     </div>
     
   </nav>
-
 </section>

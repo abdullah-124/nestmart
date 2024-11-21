@@ -6,7 +6,7 @@ from .models import Coustomer
 class RegestrationForm(UserCreationForm):
     class Meta:
         model = Coustomer
-        fields = ['username','email', 'mobile_num', 'password2','password1',]
+        fields = ['username','email', 'mobile_num', 'password2','password1','photo']
         widgets = {
             'username': forms.TextInput(attrs={'placeholder': 'Enter your username'}),
             'email': forms.EmailInput(attrs={'placeholder': 'Enter your Email'}),

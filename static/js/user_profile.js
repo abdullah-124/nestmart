@@ -1,4 +1,4 @@
-console.log('i am from user profile.js')
+// console.log('i am from user profile.js')
 const form_elements = document.querySelectorAll('input')
 const submit_button = document.getElementById('submit_btn')
 function enable_submit() {
@@ -42,4 +42,30 @@ location_input.addEventListener('input', () => {
     else {
         suggestions_box.innerHTML = ''
     }
+})
+
+// VALIDATION FOR PROFILE IMAGAE WHILE UPLOAD
+const profile_photo_input = document.getElementById('photo_upload')
+const upload_msg = document.getElementById('upload_msg')
+const MAX_MB_SIZE =  1024*1024
+const allowedTypes = ["image/jpeg", "image/png"];
+
+profile_photo_input.addEventListener('change',function(e){
+    const profile_photo = e.target.files[0]
+    console.log('size',profile_photo.size)
+    if(profile_photo.size > MAX_MB_SIZE){
+        upload_msg.innerText = 'file size grater than 1mb'
+        upload_msg.classList.add('text-danger')
+        e.target.value = ''
+    }
+    else if (!allowedTypes.includes(profile_photo.type)){
+        upload_msg.innerText = "Invalid file type. Only(jpg/png)"
+        upload_msg.classList.add('text-danger')
+        e.target.value = ''
+    }
+    else {
+        upload_msg.innerText = profile_photo.name;
+        upload_msg.classList.add('text-success')
+    }
+    e.preventDefault()
 })

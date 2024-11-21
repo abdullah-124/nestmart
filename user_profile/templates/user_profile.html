@@ -3,14 +3,14 @@
 {% load static %}
 {% load crispy_forms_tags %}
 {% block user_content %}
-<h6 class="fw-bold">Edit Profile</h6>
-<form action="" class="">
+<h6 class="fw-bold border-bottom pb-3">Edit Profile</h6>
+<form action="" class="mt-3" enctype="multipart/form-data" method="post">
     {% csrf_token %}
     <!-- {{form|crispy}} -->
     <div class="row">
 
         <aside class="col-12 col-lg-9">
-            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1">
+            <div class="row row-cols-lg-2 row-cols-md-2 row-cols-1 gy-4">
                 <div class="">
                     <h6>Username</h6>
                     {{form.username}}
@@ -33,20 +33,65 @@
                 </div>
                 <div class="col-12 my-3">
                     <h6>Address</h6>
-                    <input class="form-control" id="location_input" type="text" placeholder="Type to search..."
-                        name="location">
+                    <input class="form-control" name="location" id="location_input" type="text"
+                        placeholder="Type to search..." name="location" {% if user.location %} value="{{user.location}}"
+                        {% endif %}>
                     <ul id="suggestions_box"></ul>
                 </div>
-                
+
 
                 <input id="submit_btn" type="submit" value="Save Changes" class="my-4 btn btn-success " disabled>
             </div>
         </aside>
-        <aside class="mx-auto col-5 col-lg-3">
-            {{form.photo}}
+        <aside class="mt-3 col-5 col-lg-3 mx-auto ">
+            <div class="user_photo mx-auto">
+                {% if user.photo %}
+                <img src="{{user.photo.url }}" alt="">
+                {% else %}
+                <h1>{{user.username|slice:2}}</h1>
+                {% endif %}
+            </div>
+            <div class="w-100 py-2 d-inline-flex justify-content-center">
+                <div class="m-2">
+                    <label class="btn sm btn-sm btn-outline-success" for="photo_upload">Update</label></div>
+                {% if user.photo %}
+                <button type="submit" class="m-2 btn sm btn-sm btn-outline-danger" >
+                    <label for="photo_removed">Remove</label>
+                </button>
+                {% endif %}
+            </div>
+            <span class="sm" id="upload_msg"></span>
+            <input class="d-none" type="checkbox" name="photo_removed" id="photo_removed">
+            <input class="d-none" type="file" name="photo" id="photo_upload" accept="image/png, image/jpeg">
         </aside>
     </div>
 </form>
 
-<script src="{% static 'js/user_profile.js' %}"></script>
+{% include 'common/modal.html' %}
 {% endblock user_content %}
+
+{% block script %}
+<script>
+    const modal = new bootstrap.Modal(document.getElementById('successModal'))
+    const modal_massage = document.getElementById('modal_massage')
+    const update_status = "{{update_status}}"
+    console.log(update_status)
+    if (update_status != 'None') {
+        if (update_status == 'True') {
+            modal_massage.innerHTML = `<h6 class='text-success'>Update Successfully</h6}}`
+
+            modal.show()
+        }
+        else if (update_status == 'fail') {
+            modal_massage.innerHTML = `<h6 class='text-danger'>Update Failed!</h6}}`
+
+            modal.show()
+        }
+        setTimeout(() => {
+            modal.hide()
+        }, 2000);
+    }
+</script>
+<script src="{% static 'js/user_profile.js' %}"></script>
+{% endblock script %}
+    

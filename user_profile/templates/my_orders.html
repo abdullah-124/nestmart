@@ -2,6 +2,18 @@
 
 
 {% block user_content %}
-    <h1>MY ORDERS</h1>
+<h1>MY ORDERS</h1>
+{% include 'common/modal.html' %}
+
+
 {% endblock user_content %}
-    
+
+
+{% block script %}
+<script>
+    const successModal = new bootstrap.Modal(document.getElementById('successModal'))
+    const modal_massage = document.getElementById('modal_massage')
+    modal_massage.innerHTML = `<h5 class="text-success">MY orders page</h5>`
+    // successModal.show()
+</script>
+{% endblock script %}

@@ -32,6 +32,10 @@
     margin-inline-start: 10px;
     padding: 2px;
 }
+.user_bge img{
+    width: 100%;
+    height: 100%;
+}
 .title_h1{
     font-family: "Poppins", sans-serif;
     font-weight: 600;
@@ -63,4 +67,7 @@
 }
 .suggestion_list:hover{
     background: #cccccc8e;
+}
+*{
+    /* border: 1px solid red!important; */
 }

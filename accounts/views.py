@@ -42,11 +42,10 @@ def user_login(req):
     user = authenticate(username = username, password = password)
     if(user):
         login(req,user)
-        previous_url = req.META.get('HTTP_REFERER', '/')
-        print('this is ', previous_url)
         messages.success(req, 'Login Successfull')
-        return redirect(previous_url)
-    messages.error(req, 'Invalid username/password')
+        return redirect('home')
+    else:
+        messages.error(req, 'Invalid username/password')     
     return render(req,'accounts/login.html')
 # USER LOGOUT
 def user_logout(request):
