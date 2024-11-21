@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'origin',
     'home',
     'user_profile',
-    'wishlist'
+    'wishlist',
     'core',
     'crispy_forms',
     "crispy_bootstrap5",

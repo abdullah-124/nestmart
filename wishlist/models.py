@@ -5,7 +5,7 @@ from product.models import Product
 # Create your models here.
 class Wishlist(models.Model):
     user = models.ForeignKey(Coustomer, on_delete=models.CASCADE)
-    product = models.ManyToManyField(Product)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
     added_at = models.DateTimeField(auto_now_add=True)
     priority = models.PositiveIntegerField(default=1)
     class Meta: 
