@@ -40,3 +40,10 @@ ul{
     width: 100%;
     height: auto;
 }
+.product_description ul{
+    padding: 10px !important;
+    list-style: disc !important;
+}
+.product_description ul li{
+    color: black;
+}

@@ -51,6 +51,14 @@
     text-align: center;
     border-radius: 5px;
 }
+.thumbnail{
+    width: 50px;
+    height: 50px;
+    box-shadow: 0px 0px 3px gainsboro;
+    border-radius:4px;
+    /* padding: 10px; */
+    margin: 4px;
+}
 .list_style h6 span{
     width: 80px;
     font-family: 'Poppins',sans-serif;

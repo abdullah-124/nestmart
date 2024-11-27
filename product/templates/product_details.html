@@ -12,8 +12,17 @@
         <div class="row row-cols-lg-2 row-cols-1">
             <div class="col-lg-8 col-12">
                 <div class="py-3 border align-items-center row row-cols-lg-2 row-cols-md-2 row-cols-1">
-                    <div class=" rounded p-3">
-                        <img class="img-fluid w-100" src="{{product.photo.url}}" alt="">
+                    <div class="">
+                        <img id="main_image" class="img-fluid w-100 rounded mb-5" src="{{product.photo.url}}" alt="">
+                        <div class="d-inline-flex">
+                            <img src="{{product.photo.url}}" alt="" class="thumbnail">
+                            {% if product.photo1 %}
+                            <img src="{{product.photo1.url}}" alt="" class="thumbnail">
+                            {% endif %}
+                            {% if product.photo2 %}
+                            <img src="{{product.photo2.url}}" alt="" class="thumbnail">
+                            {% endif %}
+                        </div>
                     </div>
                     <div>
                         <div class="info p-2">
@@ -29,7 +38,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <p>{{product.description|escape|slice:100}}</p>
+                            <p>{{product.short_description}}</p>
                             <div class="product_detail_action d-flex align-items-center">
                                 <form class="d-flex align-items-center" action="">
                                     <input class="me-2" type="number" value="1" name="" id="">
@@ -102,3 +111,8 @@
     </section>
 </main>
 {% endblock body %}
+
+{% block script %}
+    <script src="{% static 'js/product_detail.js' %}"></script>
+{% endblock script %}
+    
