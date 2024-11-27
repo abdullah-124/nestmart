@@ -4,8 +4,6 @@ from category.models import Product_category
 # Create your models here.
 class Location(models.Model):
     name = models.CharField(max_length=255)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
     description = models.TextField(blank=True)
 
     def __str__(self):

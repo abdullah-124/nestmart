@@ -32,3 +32,11 @@ a:hover{
 ul{
     padding: 0 !important;
 }
+.product_description{
+    width: 100%;
+    overflow: hidden;
+}
+.product_description img{
+    width: 100%;
+    height: auto;
+}

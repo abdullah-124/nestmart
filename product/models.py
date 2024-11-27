@@ -27,6 +27,7 @@ class Product(models.Model):
     seller = models.ForeignKey(Seller,on_delete=models.CASCADE, related_name='products')
     stock_quantity = models.IntegerField()
     description = models.TextField()
+    short_description = models.CharField(max_length=150, blank=True, null=True)
     unit = models.CharField(max_length=10)
     discount = models.DecimalField(max_digits=3,decimal_places=1, default=0)
     status = models.CharField(max_length=20, choices=PRODUCT_STATUS, default='Sale')

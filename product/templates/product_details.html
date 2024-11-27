@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
 {% load static %}
+
+{% block header %}
+    {% include 'common/navbar.html' %}
+{% endblock header %}
+    
 {% block body %}
 <main class="container">
     <section class="">
@@ -24,7 +29,7 @@
                                     {% endif %}
                                 </div>
                             </div>
-                            <p>{{product.description|slice:100}}</p>
+                            <p>{{product.description|escape|slice:100}}</p>
                             <div class="product_detail_action d-flex align-items-center">
                                 <form class="d-flex align-items-center" action="">
                                     <input class="me-2" type="number" value="1" name="" id="">
@@ -52,7 +57,7 @@
                         </div>
                         <section>
                             <div id="description">
-                                <p class="text-secondary font-monospace">{{product.description}}</p>
+                                <div class="product_description text-secondary font-monospace">{{product.description|safe}}</div>
                                 <div class="list_style">
                                     <h6 class="">
                                         <span>Sold</span>: {{product.sold_quantity}}

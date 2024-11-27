@@ -1,12 +1,21 @@
 <!DOCTYPE html>
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block header  %}
    {% include 'common/navbar.html' %}
 {% endblock header  %}
    
 {% block body %}
-   <h1> this is wishlist page</h1>
+   <div class="container py-5">
+      <h2 class="fw-bold">Your Wishlist</h2>
+      <p class="sm">There are 5 products in this list</p>
+   </div>
 {% endblock body %}
+
+
+{% block script %}
+   <script src="{% static 'js/wishlist.js' %}"></script>
+{% endblock script %}
+   
     
