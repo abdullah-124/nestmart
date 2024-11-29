@@ -8,7 +8,7 @@
 * {
     margin: 0;
     padding: 0;
-    list-style: none;
+    /* list-style: none; */
     font-family: "Exo 2", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
@@ -29,21 +29,22 @@ a:hover{
     color: seagreen;
     cursor: pointer;
 }
-ul{
-    padding: 0 !important;
-}
+
 .product_description{
+    all: unset;
     width: 100%;
     overflow: hidden;
 }
 .product_description img{
     width: 100%;
     height: auto;
+    border-radius: 4px;
 }
 .product_description ul{
-    padding: 10px !important;
-    list-style: disc !important;
+    /* padding: 10px !important; */
+
 }
 .product_description ul li{
     color: black;
+    list-style: circle !important;
 }

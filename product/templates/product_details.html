@@ -3,26 +3,17 @@
 {% load static %}
 
 {% block header %}
-    {% include 'common/navbar.html' %}
+{% include 'common/navbar.html' %}
 {% endblock header %}
-    
+
 {% block body %}
 <main class="container">
     <section class="">
         <div class="row row-cols-lg-2 row-cols-1">
             <div class="col-lg-8 col-12">
                 <div class="py-3 border align-items-center row row-cols-lg-2 row-cols-md-2 row-cols-1">
-                    <div class="">
-                        <img id="main_image" class="img-fluid w-100 rounded mb-5" src="{{product.photo.url}}" alt="">
-                        <div class="d-inline-flex">
-                            <img src="{{product.photo.url}}" alt="" class="thumbnail">
-                            {% if product.photo1 %}
-                            <img src="{{product.photo1.url}}" alt="" class="thumbnail">
-                            {% endif %}
-                            {% if product.photo2 %}
-                            <img src="{{product.photo2.url}}" alt="" class="thumbnail">
-                            {% endif %}
-                        </div>
+                    <div  class="">
+                        <img id="main_image" class="w-100 img-fluid rounded " src="{{product.photo.url}}" alt="">
                     </div>
                     <div>
                         <div class="info p-2">
@@ -50,23 +41,33 @@
                             </div>
                         </div>
                     </div>
+                    <!-- image thumnail -->
+                    <div class="mt-4 d-inline-flex">
+                        <img src="{{product.photo.url}}" alt="" class="thumbnail">
+                        {% if product.photo1 %}
+                        <img src="{{product.photo1.url}}" alt="" class="thumbnail">
+                        {% endif %}
+                        {% if product.photo2 %}
+                        <img src="{{product.photo2.url}}" alt="" class="thumbnail">
+                        {% endif %}
+                    </div>
                 </div>
                 <div class="row border mt-4 deteil_info">
                     <div class="col-12 p-3">
                         <div class="">
 
-                            <a class="btn btn-sm btn-outline-success" href="">Description</a>
-                            <a class="btn btn-sm btn-outline-success" href="">Seller</a>
-                            <a class="btn btn-sm btn-outline-success" href="">Reviews</a>
-                            <button class="btn btn-sm border-success">
-                                <img width="19" src="{% static 'images/icon/view.png' %}" alt="">
+                            <a class="sm" href="">Description</a>
+
+                            <div class="ms-3 d-inline">
+                                <img width="14" src="{% static 'images/icon/view.png' %}" alt="">
                                 <span class="sm text-secondary">({{product.view_count}})</span>
-                            </button>
+                            </div>
                             <hr>
                         </div>
                         <section>
                             <div id="description">
-                                <div class="product_description text-secondary font-monospace">{{product.description|safe}}</div>
+                                <div class="product_description text-secondary font-monospace">
+                                    {{product.description|safe}}</div>
                                 <div class="list_style">
                                     <h6 class="">
                                         <span>Sold</span>: {{product.sold_quantity}}
@@ -95,7 +96,7 @@
             </div>
             <div class="col-lg-4">
                 {% include "./details_sidebar.html" %}
-               
+
             </div>
         </div>
     </section>
@@ -103,8 +104,11 @@
         <h5 class="py-2 pt-5">Similar Products</h5>
         <div>
             <div class="row row-cols-lg-6 row-cols-md-3 row-cols-2">
+                <ul style="list-style: circle;">
+                    <li><a href="">asdf</a></li>
+                </ul>
                 {% for i in similar_product %}
-                  {% include "common/product_card.html" %}
+                {% include "common/product_card.html" %}
                 {% endfor %}
             </div>
         </div>
@@ -113,6 +117,5 @@
 {% endblock body %}
 
 {% block script %}
-    <script src="{% static 'js/product_detail.js' %}"></script>
+<script src="{% static 'js/product_detail.js' %}"></script>
 {% endblock script %}
-    
