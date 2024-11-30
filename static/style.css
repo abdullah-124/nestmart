@@ -70,11 +70,17 @@
     text-align: center;
 }
 .seller_card .cover_logo{
-    height: 100px;
+    height: 120px;
+    width: 100%;
     padding: 10px;
     border-radius: 4px 4px 0 0;
     display: flex;
     align-items: center;
+}
+.seller_card .cover_logo img{
+    width: auto;
+    height: 100%;
+    margin: auto;
 }
 .seller_card .user_info{
     
@@ -90,6 +96,7 @@
     align-items: center;
     justify-content: center;
     background: #fff;
+    padding: 4px;
 
 }
 .seller_card .user_logo h6{

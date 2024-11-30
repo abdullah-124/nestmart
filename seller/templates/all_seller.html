@@ -30,16 +30,20 @@
                     <div>
                         <div class="seller_card border rounded-3">
                             <div class="cover_logo border">
-                                <img class="pb-3 img-fluid" src="{{i.photo.url}}" alt="">
+                                <img class="pb-3 " src="{{i.photo.url}}" alt="">
                             </div>
                             <div class="user_info text-center">
                                 <div class="user_logo">
+                                    {% if i.user.photo %}
+                                      <img class="img-fluid rounded-circle" src="{{i.user.photo.url}}" alt="">
+                                    {% else %}
                                     <h6 class="text-success fw-bold">{{i.user.username|slice:2}}</h6>
+                                    {% endif %}
                                 </div>
                                 <h5 class="fw-bold m-0">{{i.store_name}}</h5>
                                 <div class="text-secondary">
                                     {% if i.user.first_name %}
-                                    <h6 class="">By {{i.user.first_name}}</h6>
+                                    <h6 class="fw-italic">By {{i.user.first_name}}</h6>
                                     {% else %}
                                     <h6 class="">By {{i.user.username}}</h6>
                                     {% endif %}

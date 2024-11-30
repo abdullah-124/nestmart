@@ -1,6 +1,7 @@
 .navbar{
     /* background-color: #fff; */
     backdrop-filter: blur(10px);
+    z-index: 10000;
 }
 .nav-link{
     color: #999 !important;
