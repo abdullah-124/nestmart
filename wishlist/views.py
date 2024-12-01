@@ -9,7 +9,7 @@ def  wishlist(req):
     return render(req,'wishlist.html')
 class WishlistView(LoginRequiredMixin,View):
     def get(self, req, *args, **kwargs):
-        wishlist_items = Wishlist.objects.filter(user = req.user).select_related('products')
+        wishlist_items = Wishlist.objects.select_related('product').filter(user=req.user)
         context = {
             'wishlist_items': wishlist_items
         }

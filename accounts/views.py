@@ -37,15 +37,16 @@ def user_register(req):
 
 # user login
 def user_login(req):
-    username = req.POST.get('username')
-    password = req.POST.get('password')
-    user = authenticate(username = username, password = password)
-    if(user):
-        login(req,user)
-        messages.success(req, 'Login Successfull')
-        return redirect('home')
-    else:
-        messages.error(req, 'Invalid username/password')     
+    if(req.method == 'POST'):
+        username = req.POST.get('username')
+        password = req.POST.get('password')
+        user = authenticate(username = username, password = password)
+        if(user):
+            login(req,user)
+            messages.success(req, 'Login Successfull')
+            return redirect('home')
+        else:
+            messages.error(req, 'Invalid username/password')     
     return render(req,'accounts/login.html')
 # USER LOGOUT
 def user_logout(request):

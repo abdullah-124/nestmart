@@ -7,9 +7,13 @@
 {% endblock header  %}
    
 {% block body %}
-   <div class="container py-5">
+   <div class="container py-2">
       <h2 class="fw-bold">Your Wishlist</h2>
+      {% if wishlist_items %}
       <p class="sm">There are 5 products in this list</p>
+      {% else %}
+      <p class="sm">Your wishlist is empty</p>
+      {% endif %}
    </div>
 {% endblock body %}
 
