@@ -103,6 +103,16 @@
 .seller_card .user_logo h6{
     font-size: 30px;
 }
+.seller_cover_photo{
+    background: darkorange;
+    border-radius: 8px 8px 0 0;
+}
+.seller_cover_photo img{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 8px 8px 0 0;
+}
 /* Sidebar for profile page */
 
 .sidebar{

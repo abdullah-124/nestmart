@@ -10,6 +10,7 @@ class Seller(models.Model):
     # coustomer = models.OneToOneField(Coustomer, on_delete=models.CASCADE,null=True,blank=True)
     store_name = models.CharField(max_length=50, unique=True)
     photo = models.ImageField(upload_to='images/seller/')
+    cover_photo = models.ImageField(upload_to='images/seller/', null=True, blank=True)
     mobile = models.CharField(max_length=12)
     product_sell = models.IntegerField(default=0,null=True)
     sell_amount = models.IntegerField(default=0,null=True)
@@ -26,3 +27,4 @@ class Seller(models.Model):
         if(not self.location and self.user.location):
             self.location, created = Location.objects.get_or_create(name=self.user.location)
             super().save(*args, **kwargs)
+        super(Seller, self).save(*args, **kwargs)

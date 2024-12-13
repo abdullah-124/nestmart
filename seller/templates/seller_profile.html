@@ -5,8 +5,10 @@
   {% include "common/navbar.html" %}
   <div class="container">
     <div>
-      <div style="height: 200px;" class="cover_photo bg-warning">
-
+      <div style="height: 300px;" class="seller_cover_photo">
+        {% if store.cover_photo %}
+          <img class="img-fluid" src="{{store.cover_photo.url}}" alt="">
+        {% endif %}
       </div>
       <div class=" border seller_info p-3">
         <div style="transform: translateY(-85px);" class="d-flex align-items-end">
@@ -16,7 +18,7 @@
           </div>
           <div class="ms-4 ">
             <h5 class="fw-bold">{{store.store_name}}</h5>
-            <p class="sm m-0">{{store.origin}}</p>
+            <p class="sm m-0">{{store.user.location}}</p>
           </div>
           <hr>
         </div>
@@ -47,10 +49,7 @@
             <div class=" border">
               <div class=" p-3">
                 <h6 class="sm fw-bold">Address</h6>
-                <p class="m-0">Country: {{store.origin.country}}</p>
-                <p class="m-0">Postal: {{store.origin.postal}}</p>
-                <p class="m-0">District: {{store.origin.district}}</p>
-                <p class="m-0">Address: {{store.origin.address}}</p>
+                {{store.user.location}}
               </div>
 
             </div>
