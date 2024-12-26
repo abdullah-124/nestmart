@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import wishlist,WishlistView
+from .views import WishlistView
 urlpatterns = [
-    path('', WishlistView.as_view(), name='wishlist')
+    path('', WishlistView.as_view(), name='wishlist'),
 ]

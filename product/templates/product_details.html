@@ -12,7 +12,7 @@
         <div class="row row-cols-lg-2 row-cols-1">
             <div class="col-lg-8 col-12">
                 <div class="py-3 border align-items-center row row-cols-lg-2 row-cols-md-2 row-cols-1">
-                    <div  class="">
+                    <div class="">
                         <img id="main_image" class="w-100 img-fluid rounded " src="{{product.photo.url}}" alt="">
                     </div>
                     <div>
@@ -32,10 +32,13 @@
                             <p>{{product.short_description}}</p>
                             <div class="product_detail_action d-flex align-items-center">
                                 <form class="d-flex align-items-center" action="">
+                                    {% csrf_token %}
                                     <input class="me-2" type="number" value="1" name="" id="">
                                     <button class="btn btn-success" type="submit">Add to cart</button>
                                 </form>
-                                <a id="add_wishlist" data-product-id="{{product.id}}" class="mx-2 btn btn-outline-success">
+                                <!-- wishlist btn -->
+                                <a id="add_wishlist_btn" data-product-id="{{ product.id }}"
+                                    class="mx-2 btn btn-outline-success">
                                     <img width="20" src="{% static 'images/icon/wishlist.png' %}" alt="">
                                 </a>
                             </div>
@@ -53,7 +56,7 @@
                     </div>
                 </div>
                 <div class="row border mt-4 deteil_info">
-                    <div  class="col-12 p-3 ">
+                    <div class="col-12 p-3 ">
                         <div class="sticky_top">
 
                             <a class="btn btn-sm " href="">Product Description</a>
@@ -64,7 +67,7 @@
                             </div>
                             <hr>
                         </div>
-                        <section >
+                        <section>
                             <div id="description">
                                 <div class="product_description text-secondary font-monospace">
                                     {{product.description|safe}}</div>
@@ -104,18 +107,22 @@
         <h5 class="py-2 pt-5">Similar Products</h5>
         <div>
             <div class="row row-cols-lg-6 row-cols-md-3 row-cols-2">
-                <ul style="list-style: circle;">
-                    <li><a href="">asdf</a></li>
-                </ul>
                 {% for i in similar_product %}
                 {% include "common/product_card.html" %}
                 {% endfor %}
             </div>
         </div>
     </section>
+    <ul style="list-style: circle;">
+        <li><a href="">asdf{{messages}}</a></li>
+    </ul>
 </main>
 {% endblock body %}
 
 {% block script %}
 <script src="{% static 'js/product_detail.js' %}"></script>
+<script>
+    // const massage = "{{messeges}}"
+    // console.log(massage)
+</script>
 {% endblock script %}
