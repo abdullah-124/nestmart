@@ -4,6 +4,7 @@ from django.http import Http404
 from .models import Product
 from seller.models import Seller
 from category.models import Product_category
+from wishlist.models import Wishlist
 # Create your views here.
 
 def products_load(req, category_id=None):
@@ -47,7 +48,7 @@ class ProductDetailView(DetailView):
         product = super().get_object()
         context['product'] = product
         context['similar_product'] = Product.objects.filter(category = product.category).exclude(id=product.id)[:6]
-        # view count
+        context['in_wishlist'] = Wishlist.objects.filter(user = self.request.user,product = product).exists()
         # product.view_count = product.view_count + 1 
         # product.save(update_fields=['view_count'])  
         # product.refresh_from_db()  

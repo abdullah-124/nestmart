@@ -38,8 +38,13 @@
                                 </form>
                                 <!-- wishlist btn -->
                                 <a id="add_wishlist_btn" data-product-id="{{ product.id }}"
-                                    class="mx-2 btn btn-outline-success">
-                                    <img width="20" src="{% static 'images/icon/wishlist.png' %}" alt="">
+                                    class="mx-2 text-success">
+                                    <!-- <img width="20" src="{% static 'images/icon/wishlist.png' %}" alt=""> -->
+                                    {% if in_wishlist %}
+                                    <i class="fs-1 bi bi-heart-fill"></i>
+                                    {% else %}
+                                    <i class="fs-1 bi bi-heart"></i>
+                                    {% endif %}
                                 </a>
                             </div>
                         </div>
@@ -114,8 +119,9 @@
         </div>
     </section>
     <ul style="list-style: circle;">
-        <li><a href="">asdf{{messages}}</a></li>
+        <li><a href="">asdf{{in_wishlist}}</a></li>
     </ul>
+    {% include 'common/modal.html' %}
 </main>
 {% endblock body %}
 

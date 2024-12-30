@@ -31,14 +31,14 @@ class WishlistView(LoginRequiredMixin,TemplateView):
             jsondata = json.loads(data)
             product_id  = jsondata.get('product_id')
             if not product_id:
-                return JsonResponse({'messages': 'Product id is missing'})
+                return JsonResponse({'type':'danger','messages': 'Product id is missing'})
             product = get_object_or_404(Product, id = product_id)
             wishlist,created = Wishlist.objects.get_or_create(
                 user = self.request.user,
                 product = product
             )
             if created:
-                return JsonResponse({'message': 'Product added to wishlist'}, status=201)
-            return JsonResponse({'message': 'Product already in wishlist'}, status=200)
+                return JsonResponse({'type': 'success','message': 'Product added to wishlist'}, status=201)
+            return JsonResponse({'type': 'info','message': 'Product already in wishlist'}, status=200)
         except Exception as e:
-            return JsonResponse({'messages': str(e)})
+            return JsonResponse({'type':'danger', 'messages': str(e)})

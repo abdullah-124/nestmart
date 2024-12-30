@@ -24,13 +24,32 @@ add_wishlist_btn.addEventListener('click', () => {
             'X-CSRFToken': csrftoken,
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ product_id: 2 }),
+        body: JSON.stringify({ product_id: product_id }),
     })
     .then(res => res.json())
     .then(data =>{
-        console.log(data)
+        show_modal(data)
     })
     .catch(er=>{
         console.error('Fetch',er)
     })
 })
+
+const show_modal = (data)=>{
+    const modal = new bootstrap.Modal(document.getElementById('successModal'))
+    const modal_massage = document.getElementById('modal_massage')
+    if(data.type){
+        modal_massage.innerHTML = `
+            <i style="font-size:52px" class="bi bi-check2-circle text-success"></i>
+            <h6 class="text-${data.type}">${data.message}</h6>
+            `
+    }
+    else{
+        modal_massage.innerHTML = `<h6 class="text-danger">Something went wrong!!!</h6>`
+    }
+    modal.show()
+    setTimeout(() => {
+        modal.hide()
+        window.location.reload()
+    }, 1500);
+}
