@@ -1,8 +1,10 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http import JsonResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.views.generic import TemplateView
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, DeleteView
 import json
 from product.models import Product
 from .models import Wishlist
@@ -18,10 +20,7 @@ class WishlistView(LoginRequiredMixin,TemplateView):
     # get function for wishlist
     def get(self, req, *args, **kwargs):
         wishlist_items = Wishlist.objects.select_related('product').filter(user=req.user)
-        context = {
-            'wishlist_items': wishlist_items
-        }
-        return render(req, 'wishlist.html', context)
+        return render(req, 'wishlist.html', )
         
     # add product to wishlist 
     def post(self, req, *args, **kwargs):
@@ -42,3 +41,15 @@ class WishlistView(LoginRequiredMixin,TemplateView):
             return JsonResponse({'type': 'info','message': 'Product already in wishlist'}, status=200)
         except Exception as e:
             return JsonResponse({'type':'danger', 'messages': str(e)})
+
+@login_required
+def wishlist_delete_view(req, id):
+    # print(id)
+    item = get_object_or_404(Wishlist, id = id)
+    # print(item.user, item.product)
+    if(item.user == req.user):
+        item.delete()
+
+    else :
+        return render(req, 'common/not_found.html')
+    return redirect('wishlist')

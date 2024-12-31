@@ -40,7 +40,12 @@
     font-family: "Poppins", sans-serif;
     font-weight: 600;
 }
-
+.hl_badge{
+    border-radius: 4px;
+    padding: 1px 5px;
+    margin: 0;
+    color: white;
+}
 .sm{
     font-size: 12px;
 }

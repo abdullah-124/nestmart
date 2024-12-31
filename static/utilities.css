@@ -29,7 +29,10 @@ a:hover{
     color: seagreen;
     cursor: pointer;
 }
-
+td, th {
+    text-align: center; /* Horizontally centers text */
+    vertical-align: middle; /* Vertically centers text */
+  }
 .product_description{
     all: unset;
     width: 100%;

@@ -7,7 +7,7 @@ from seller.models import Seller
 import math
 # Create your models here.
 PRODUCT_STATUS = (
-    ('Out of stock','Out of stock'),
+    ('Out stock','Out stock'),
     ('Sale','Sale'),
     ('Upcomming', 'Upcomming'),
     ('Not available', 'Not available'),

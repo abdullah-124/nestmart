@@ -2,24 +2,64 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block header  %}
-   {% include 'common/navbar.html' %}
-{% endblock header  %}
-   
+{% block header %}
+{% include 'common/navbar.html' %}
+{% endblock header %}
+
 {% block body %}
-   <div class="container py-2">
-      <h2 class="fw-bold">Your Wishlist</h2>
-      {% if wishlist_items %}
-      <p class="sm">There are {{wishlist_items|length}} products in this list</p>
-      {% else %}
-      <p class="sm">Your wishlist is empty</p>
-      {% endif %}
-   </div>
+<div class="container py-2">
+   <h2 class="fw-bold">Your Wishlist</h2>
+   {% if wishlist %}
+   <section>
+      <p class="sm">There are <span class="fw-bold text-success">{{wishlist|length}}</span> products in this list
+      </p>
+      <!-- wishlist table  -->
+      <table class="table">
+         <thead class="thead-active">
+            <tr>
+               <th scope="col">#</th>
+               <th scope="col">Product</th>
+               <th scope="col"></th>
+               <th scope="col">Price</th>
+               <th scope="col">Stock Status</th>
+               <th scope="col">Action</th>
+               <th scope="col">Remove</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for i in wishlist %}
+            <tr>
+               <th class="sm" scope="row">{{forloop.counter}}</th>
+               <td><img width="50" class="img-fluid" src="{{i.product.photo.url}}" alt=""></td>
+               <td class="sm">
+                  {{i.product.name}}
+                  
+               </td>
+               <td class="fs-5 text-success fw-bold">{{i.product.current_price}}</td>
+               {% if i.product.status != "Out stock" %}
+               <td class="sm "><span class="hl_badge bg-success">{{i.product.status}}</span></td>
+               <td><a href="" class="btn btn-sm btn-success">Add To cart</a></td>
+               <!-- if out of stock -->
+               {% else %}
+               <td class="sm"><span class="hl_badge bg-danger">{{i.product.status}}</span></td>
+               <td><a href="" class="btn btn-sm btn-dark">Contact</a></td>
+               {% endif %}
+               <td>
+                  <a href="{% url 'delete_wishlist' i.id %}"><i class="bi bi-trash"></i></a>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </section>
+
+   {% else %}
+   <p class="sm">Your wishlist is empty</p>
+   {% endif %}
+</div>
 {% endblock body %}
 
 
 {% block script %}
-   <script src="{% static 'js/wishlist.js' %}"></script>
+<script src="{% static 'js/wishlist.js' %}"></script>
 {% endblock script %}
-   
-    

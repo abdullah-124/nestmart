@@ -39,7 +39,12 @@
           </a>
           <a class="nav_bge" href="{% url 'wishlist' %}">
             <img src="{% static '/images/icon/wishlist.png' %}" alt="">
-            <span>99+</span>
+            {% if wishlist %}
+              {% if wishlist|length > 10 %}
+                <span>9+</span>
+              {% else %}
+              <span>{{wishlist|length}}</span>
+            {% endif %}{% endif %}
           </a>
           <div class="dropdown">
             <button class="btn user_bge border border-success rounded-circle dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
