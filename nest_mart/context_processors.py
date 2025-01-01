@@ -8,8 +8,10 @@ def load_nav_obj(req):
     context = dict()
     category = Product_category.objects.all()
     seller = Seller.objects.annotate(total_product = Count('products')).order_by('-total_product')
-    wishlist = Wishlist.objects.filter(user=req.user)
+    wishlist = []
+    if req.user.is_authenticated:
+        wishlist = Wishlist.objects.filter(user=req.user)
     for i in category:  
         sub_category = Sub_Category.objects.filter(parent = i)
         context[i] = sub_category
-    return {'category':context, 'seller':seller,'wishlist':wishlist}
+    return {'category':context, 'seller':seller,'wishlist': wishlist}

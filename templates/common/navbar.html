@@ -33,7 +33,7 @@
       <div>
         {% if user.is_authenticated %}
         <div class="d-inline-flex align-items-center">
-          <a class="nav_bge">
+          <a href="{% url 'cart_page' %}" class="nav_bge">
             <img src="{% static '/images/icon/cart.png' %}" alt="">
             <span>2</span>
           </a>
